@@ -3,26 +3,70 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Undangan Buka Bersama PGA – SHE</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<title>Undangan Buka Bersama – PGA SHE</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Poppins',sans-serif;scroll-behavior:smooth;overflow-x:hidden;background:#0f172a}
-section{min-height:100vh;display:flex;justify-content:center;align-items:center;text-align:center;padding:80px 20px;position:relative}
-
-.hero{
-background:
-linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)),
-url('bg-ramadhan.jpg');
-background-size:cover;
-background-position:center;
+body{
+font-family:'Poppins',sans-serif;
+background:#000;
 color:white;
+overflow-x:hidden;
+scroll-behavior:smooth;
 }
 
-.overlay-content{
-max-width:850px;
-animation:fadeUp 1.5s ease;
+/* OPENING */
+.opening{
+position:fixed;
+top:0;left:0;
+width:100%;height:100vh;
+background:linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.9)),
+url('https://images.unsplash.com/photo-1580136601042-09d58f9c5f44?auto=format&fit=crop&w=1500&q=80');
+background-size:cover;
+background-position:center;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+z-index:9999;
+text-align:center;
+}
+
+.opening h1{
+font-family:'Playfair Display',serif;
+font-size:40px;
+color:#facc15;
+margin-bottom:20px;
+}
+
+.opening button{
+background:#facc15;
+border:none;
+padding:14px 30px;
+border-radius:30px;
+font-weight:600;
+cursor:pointer;
+}
+
+/* HERO */
+.hero{
+min-height:100vh;
+background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.8)),
+url('https://images.unsplash.com/photo-1580136601036-85cb6dcd98b9?auto=format&fit=crop&w=1500&q=80');
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:40px;
+}
+
+.hero-content{
+max-width:900px;
+animation:fadeUp 2s ease;
 }
 
 @keyframes fadeUp{
@@ -30,267 +74,179 @@ from{opacity:0;transform:translateY(50px)}
 to{opacity:1;transform:translateY(0)}
 }
 
-h1{
+.hero h2{
 font-family:'Playfair Display',serif;
-font-size:42px;
+font-size:44px;
 color:#facc15;
-margin-bottom:25px;
+margin-bottom:20px;
 }
 
-.subtitle{
-line-height:1.9;
+.hero p{
+line-height:1.8;
 font-size:18px;
-opacity:0.95;
+opacity:.9;
 }
 
-.card-section{
+/* LENTERA */
+.lantern{
+position:absolute;
+top:0;
+width:60px;
+animation:float 4s ease-in-out infinite;
+}
+
+.l1{left:10%}
+.l2{right:10%;animation-delay:2s}
+
+@keyframes float{
+0%{transform:translateY(0)}
+50%{transform:translateY(20px)}
+100%{transform:translateY(0)}
+}
+
+/* CARD */
+.section{
+padding:100px 20px;
 background:#0f172a;
+text-align:center;
 }
 
 .card{
-background:rgba(15,23,42,0.85);
-backdrop-filter:blur(6px);
-border:1px solid rgba(250,204,21,0.3);
-border-radius:30px;
-padding:60px 45px;
 max-width:900px;
-width:100%;
-box-shadow:0 30px 60px rgba(0,0,0,0.4);
-color:white;
+margin:auto;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(8px);
+padding:60px;
+border-radius:30px;
+border:1px solid rgba(250,204,21,0.3);
+box-shadow:0 30px 60px rgba(0,0,0,.4);
 }
 
-.card h2{
+.card h3{
 font-family:'Playfair Display',serif;
 color:#facc15;
-margin-bottom:25px;
+margin-bottom:20px;
+font-size:30px;
 }
 
-.info{margin:10px 0;font-size:16px}
-.highlight{color:#facc15;font-weight:600}
+.info{margin:10px 0}
 
-input,select{
-width:100%;padding:14px;margin:10px 0;border-radius:12px;border:none;font-size:14px
+/* COUNTDOWN */
+.countdown{
+margin-top:30px;
+font-size:22px;
+color:#facc15;
+font-weight:600;
 }
 
-.btn{
-margin-top:15px;background:#facc15;border:none;padding:14px 28px;border-radius:25px;font-size:15px;cursor:pointer;font-weight:600
-}
-
-.btn:hover{background:#eab308}
-.btn:disabled{opacity:0.7;cursor:not-allowed}
-
-/* Spinner */
-.spinner {
-display:inline-block;
-width:16px;
-height:16px;
-border:3px solid rgba(0,0,0,0.2);
-border-top:3px solid #000;
-border-radius:50%;
-animation:spin 0.7s linear infinite;
-margin-left:8px;
-}
-
-@keyframes spin{
-to{transform:rotate(360deg)}
-}
-
-.table-section{background:#0f172a;color:white;flex-direction:column}
-table{width:100%;max-width:900px;margin-top:20px;border-collapse:collapse}
-th,td{padding:10px;border:1px solid #444;font-size:14px}
-th{background:#1e293b}
-
+/* FOOTER */
 .footer{
-background:linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)),
-url('bg-ramadhan.jpg');
+padding:100px 20px;
+text-align:center;
+background:linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.9)),
+url('https://images.unsplash.com/photo-1580136601042-09d58f9c5f44?auto=format&fit=crop&w=1500&q=80');
 background-size:cover;
 background-position:center;
-color:white;
 }
 
-.footer h2{font-family:'Playfair Display',serif;color:#facc15;margin-bottom:20px}
-.footer p{max-width:800px;line-height:1.8}
-
+/* MUSIC BUTTON */
 .music-btn{
 position:fixed;
 bottom:20px;
 right:20px;
-z-index:999;
+background:#facc15;
+border:none;
+padding:12px 20px;
+border-radius:30px;
+font-weight:600;
+cursor:pointer;
 }
 </style>
 </head>
 <body>
 
-<audio id="bgMusic" loop>
-<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8b5b0f6f7.mp3?filename=ramadan-background-110624.mp3" type="audio/mpeg">
+<!-- OPENING -->
+<div class="opening" id="opening">
+<h1>🌙 Undangan Buka Bersama 🌙</h1>
+<p>Department PGA – SHE</p>
+<br>
+<button onclick="bukaUndangan()">Buka Undangan</button>
+</div>
+
+<audio id="music" loop>
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8b5b0f6f7.mp3" type="audio/mpeg">
 </audio>
 
-<button class="btn music-btn" id="playMusicBtn" style="display:none">
-🎵 Aktifkan Musik
-</button>
+<button class="music-btn" onclick="toggleMusic()">🎵 Musik</button>
 
+<!-- HERO -->
 <section class="hero">
-<div class="overlay-content">
-<h1>🌙 Undangan Buka Bersama Department PGA – SHE 🌙</h1>
-<p class="subtitle">
-Dalam rangka mempererat tali silaturahmi dan memperkuat kebersamaan di bulan suci Ramadan,
-kami mengundang seluruh rekan-rekan Department PGA – SHE untuk hadir pada acara Buka Bersama.
-<br><br>
-Semoga momen ini menjadi kesempatan indah untuk berbagi cerita, tawa, dan energi positif
-serta mempererat hubungan kekeluargaan antar rekan kerja.
-</p>
-</div>
-</section>
+<img src="https://cdn-icons-png.flaticon.com/512/616/616489.png" class="lantern l1">
+<img src="https://cdn-icons-png.flaticon.com/512/616/616489.png" class="lantern l2">
 
-<section class="card-section">
-<div class="card">
-<h2>Detail Acara</h2>
-<p class="info">📅 Rabu 11 Maret 2026</p>
-<p class="info">📍 Collaboration Center TMMIN Plant 1</p>
-<p class="info">🕔 17.00 WIB – selesai</p>
-<p class="info">🕌 Perkiraan Adzan: 18.09 WIB</p>
-
-<h2 style="margin-top:30px">Iuran Kebersamaan</h2>
-<p class="info">• Kelas 1–6 : Rp100.000</p>
-<p class="info">• Kelas 7–8 : Rp200.000</p>
-<p class="info">• Kelas 9 ke atas : Rp300.000</p>
-<p class="info highlight">⏳ Deadline: 5 Maret 2026</p>
-<p class="info highlight">🏦 Permata Bank 9913401244</p>
-
-<h2 style="margin-top:40px">Konfirmasi Kehadiran</h2>
-<input type="text" id="nama" placeholder="Nama Lengkap">
-<input type="text" id="noreg" placeholder="No Reg (7 Digit)" maxlength="7">
-<select id="status">
-<option value="Hadir">Hadir</option>
-<option value="Tidak Hadir">Tidak Hadir</option>
-</select>
-<button class="btn" onclick="simpanData(event)">Kirim Konfirmasi</button>
-</div>
-</section>
-
-<section class="table-section">
-<h2>Rekap Konfirmasi</h2>
-<p id="summary" style="margin-top:15px;font-weight:600;color:#facc15"></p>
-<table id="dataTable">
-<thead>
-<tr>
-<th>No</th>
-<th>Nama</th>
-<th>No Reg</th>
-<th>Status</th>
-</tr>
-</thead>
-<tbody></tbody>
-</table>
-<button class="btn" onclick="downloadCSV(event)">Download Rekap (CSV)</button>
-</section>
-
-<section class="footer">
-<div>
+<div class="hero-content">
 <h2>Ramadan Kareem ✨</h2>
 <p>
-Kami menantikan kehadiran rekan-rekan semua.
-Semoga kebersamaan ini membawa keberkahan dan mempererat silaturahmi.
-Sampai jumpa di acara.
+Dengan penuh rasa syukur dan kebahagiaan di bulan suci Ramadan,
+kami mengundang seluruh keluarga besar Department PGA – SHE
+untuk hadir dalam acara Buka Bersama.
+Semoga kebersamaan ini menjadi momen indah penuh keberkahan.
 </p>
 </div>
+</section>
+
+<!-- DETAIL -->
+<section class="section">
+<div class="card">
+<h3>Detail Acara</h3>
+<p class="info">📅 Rabu, 11 Maret 2026</p>
+<p class="info">📍 Collaboration Center TMMIN Plant 1</p>
+<p class="info">🕔 17.00 WIB – selesai</p>
+<p class="info">🏦 Permata Bank 9913401244</p>
+
+<div class="countdown" id="countdown"></div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<section class="footer">
+<h2 style="color:#facc15;font-family:'Playfair Display',serif">
+Sampai Jumpa di Acara 🌙✨
+</h2>
+<p>Semoga silaturahmi ini membawa keberkahan untuk kita semua.</p>
 </section>
 
 <script>
-let data = JSON.parse(localStorage.getItem('bukberData')) || [];
-const music = document.getElementById("bgMusic");
-const playBtn = document.getElementById("playMusicBtn");
+const music=document.getElementById("music");
 
-window.addEventListener("load", () => {
-music.play().then(()=>{
-playBtn.style.display="none";
-}).catch(()=>{
-playBtn.style.display="block";
-});
-});
-
-playBtn.addEventListener("click", ()=>{
+function bukaUndangan(){
+document.getElementById("opening").style.display="none";
 music.play();
-playBtn.style.display="none";
-});
-
-function renderTable(){
-const tbody = document.querySelector('#dataTable tbody');
-tbody.innerHTML = '';
-
-let hadir=0;
-let tidak=0;
-
-data.forEach((item,index) => {
-if(item.status==="Hadir") hadir++;
-else tidak++;
-
-tbody.innerHTML += `
-<tr>
-<td>${index+1}</td>
-<td>${item.nama}</td>
-<td>${item.noreg}</td>
-<td>${item.status}</td>
-</tr>`;
-});
-
-document.getElementById("summary").innerHTML =
-`Total Hadir: ${hadir} | Tidak Hadir: ${tidak}`;
 }
 
-function simpanData(e){
-const btn = e.target;
-btn.disabled=true;
-btn.innerHTML="Menyimpan <span class='spinner'></span>";
-
-setTimeout(()=>{
-const nama = document.getElementById('nama').value.trim();
-const noreg = document.getElementById('noreg').value.trim();
-const status = document.getElementById('status').value;
-
-if(nama === '' || noreg.length !== 7){
-alert('Isi nama dan No Reg 7 digit dengan benar');
-btn.disabled=false;
-btn.innerHTML="Kirim Konfirmasi";
-return;
+function toggleMusic(){
+if(music.paused){
+music.play();
+}else{
+music.pause();
+}
 }
 
-data.push({nama,noreg,status});
-localStorage.setItem('bukberData', JSON.stringify(data));
-renderTable();
+/* COUNTDOWN */
+const targetDate = new Date("March 11, 2026 17:00:00").getTime();
+const countdownEl = document.getElementById("countdown");
 
-btn.disabled=false;
-btn.innerHTML="Kirim Konfirmasi";
+setInterval(()=>{
+const now = new Date().getTime();
+const distance = targetDate - now;
 
-alert('Data berhasil disimpan');
-document.getElementById('nama').value='';
-document.getElementById('noreg').value='';
-},800);
-}
+const days = Math.floor(distance/(1000*60*60*24));
+const hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+const minutes = Math.floor((distance%(1000*60*60))/(1000*60));
 
-function downloadCSV(e){
-const btn = e.target;
-btn.disabled=true;
-btn.innerHTML="Menyiapkan <span class='spinner'></span>";
-
-setTimeout(()=>{
-let csv = 'No,Nama,No Reg,Status\n';
-data.forEach((row,index) => {
-csv += `${index+1},${row.nama},${row.noreg},${row.status}\n`;
-});
-
-const blob = new Blob([csv], { type: 'text/csv' });
-const link = document.createElement('a');
-link.href = URL.createObjectURL(blob);
-link.download = 'Rekap_Buka_Bersama.csv';
-link.click();
-
-btn.disabled=false;
-btn.innerHTML="Download Rekap (CSV)";
-},800);
-}
-
-renderTable();
+countdownEl.innerHTML = 
+`Menuju Acara: ${days} Hari ${hours} Jam ${minutes} Menit`;
+},1000);
 </script>
 
 </body>
