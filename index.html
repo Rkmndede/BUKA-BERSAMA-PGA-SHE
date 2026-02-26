@@ -4,171 +4,96 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Undangan Buka Bersama PGA – SHE</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{
-  font-family:'Poppins',sans-serif;
-  scroll-behavior:smooth;
-  overflow-x:hidden;
-}
+body{font-family:'Poppins',sans-serif;scroll-behavior:smooth;overflow-x:hidden;background:#0f172a}
+section{min-height:100vh;display:flex;justify-content:center;align-items:center;text-align:center;padding:80px 20px;position:relative}
 
-section{
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:60px 20px;
-  position:relative;
-}
-
-/* ================= HERO RAMADHAN PREMIUM ================= */
+/* ================= BACKGROUND IMAGE STYLE ================= */
 .hero{
-  background:
-    linear-gradient(rgba(15,23,42,0.85), rgba(15,23,42,0.95)),
-    url('https://images.unsplash.com/photo-1564769625905-50e93615e769?q=80&w=1600&auto=format&fit=crop');
-  background-size:cover;
-  background-position:center;
-  color:white;
+background:
+linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)),
+url('bg-ramadhan.jpg');
+background-size:cover;
+background-position:center;
+color:white;
 }
 
-.moon{
-  position:absolute;
-  top:80px;
-  right:100px;
-  width:120px;
-  height:120px;
-  background:radial-gradient(circle,#facc15 40%,transparent 60%);
-  border-radius:50%;
-  box-shadow:0 0 40px #facc15;
-  animation:glow 3s ease-in-out infinite alternate;
-}
-
-@keyframes glow{
-  from{opacity:0.7}
-  to{opacity:1}
-}
-
-h1{
-  font-family:'Playfair Display',serif;
-  font-size:44px;
-  color:#facc15;
-  margin-bottom:25px;
-}
-
-.subtitle{
-  font-size:18px;
-  max-width:750px;
-  line-height:1.8;
-  opacity:0.95;
-}
-
-.scroll{
-  position:absolute;
-  bottom:30px;
-  font-size:14px;
-  opacity:0.7;
-  animation:fade 2s infinite alternate;
-}
-
-@keyframes fade{
-  from{opacity:0.3}
-  to{opacity:1}
-}
-
-/* ================= DETAIL SECTION ================= */
-.details{
-  background:
-    linear-gradient(rgba(254,243,199,0.95), rgba(253,230,138,0.95)),
-    url('https://www.transparenttextures.com/patterns/arabesque.png');
-  background-size:contain;
-  color:#1e293b;
-}
-
-.card{
-  background:white;
-  border-radius:30px;
-  padding:60px 45px;
-  max-width:850px;
-  width:100%;
-  box-shadow:0 30px 60px rgba(0,0,0,0.25);
-  animation:fadeUp 1.2s ease;
+.overlay-content{
+max-width:850px;
+animation:fadeUp 1.5s ease;
 }
 
 @keyframes fadeUp{
-  from{opacity:0; transform:translateY(60px)}
-  to{opacity:1; transform:translateY(0)}
+from{opacity:0;transform:translateY(50px)}
+to{opacity:1;transform:translateY(0)}
+}
+
+h1{
+font-family:'Playfair Display',serif;
+font-size:42px;
+color:#facc15;
+margin-bottom:25px;
+}
+
+.subtitle{
+line-height:1.9;
+font-size:18px;
+opacity:0.95;
+}
+
+.card-section{
+background:#0f172a;
+}
+
+.card{
+background:rgba(15,23,42,0.85);
+backdrop-filter:blur(6px);
+border:1px solid rgba(250,204,21,0.3);
+border-radius:30px;
+padding:60px 45px;
+max-width:900px;
+width:100%;
+box-shadow:0 30px 60px rgba(0,0,0,0.4);
+color:white;
 }
 
 .card h2{
-  font-family:'Playfair Display',serif;
-  color:#b45309;
-  margin-bottom:25px;
+font-family:'Playfair Display',serif;
+color:#facc15;
+margin-bottom:25px;
 }
 
-.text-long{
-  line-height:1.8;
-  margin-bottom:25px;
-  font-size:16px;
-}
+.info{margin:10px 0;font-size:16px}
+.highlight{color:#facc15;font-weight:600}
 
-.info{
-  margin:12px 0;
-  font-size:16px;
-}
-
-.highlight{
-  font-weight:600;
-  color:#b45309;
-}
-
-.countdown{
-  margin-top:25px;
-  font-size:18px;
-  font-weight:600;
-  color:#d97706;
+input,select{
+width:100%;padding:14px;margin:10px 0;border-radius:12px;border:none;font-size:14px
 }
 
 .btn{
-  margin-top:35px;
-  background:#f59e0b;
-  border:none;
-  padding:15px 30px;
-  border-radius:25px;
-  font-size:16px;
-  cursor:pointer;
-  transition:0.3s;
+margin-top:15px;background:#facc15;border:none;padding:14px 28px;border-radius:25px;font-size:15px;cursor:pointer;font-weight:600
 }
 
-.btn:hover{
-  background:#d97706;
-  color:white;
-}
+.btn:hover{background:#eab308}
 
-/* ================= FOOTER ================= */
+.table-section{background:#0f172a;color:white;flex-direction:column}
+table{width:100%;max-width:900px;margin-top:20px;border-collapse:collapse}
+th,td{padding:10px;border:1px solid #444;font-size:14px}
+th{background:#1e293b}
+
 .footer{
-  background:
-    linear-gradient(rgba(15,23,42,0.9), rgba(15,23,42,0.95)),
-    url('https://images.unsplash.com/photo-1609599006353-e629aaabfeae?q=80&w=1600&auto=format&fit=crop');
-  background-size:cover;
-  background-position:center;
-  color:white;
+background:linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)),
+url('bg-ramadhan.jpg');
+background-size:cover;
+background-position:center;
+color:white;
 }
 
-.footer h2{
-  font-family:'Playfair Display',serif;
-  color:#facc15;
-  margin-bottom:25px;
-}
-
-.footer p{
-  max-width:800px;
-  line-height:1.8;
-  opacity:0.95;
-}
+.footer h2{font-family:'Playfair Display',serif;color:#facc15;margin-bottom:20px}
+.footer p{max-width:800px;line-height:1.8}
 </style>
 </head>
 <body>
@@ -177,86 +102,100 @@ h1{
 <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8b5b0f6f7.mp3?filename=ramadan-background-110624.mp3" type="audio/mpeg">
 </audio>
 
-<!-- HERO -->
+<!-- HERO WITH PREMIUM BG -->
 <section class="hero">
-<div class="moon"></div>
-<div>
+<div class="overlay-content">
 <h1>🌙 Undangan Buka Bersama Department PGA – SHE 🌙</h1>
 <p class="subtitle">
-Dalam rangka mempererat tali silaturahmi serta memperkuat kebersamaan di bulan suci Ramadan yang penuh keberkahan,
-kami dengan penuh kehangatan mengundang seluruh rekan-rekan Department PGA – SHE
-untuk hadir dan meramaikan acara Buka Bersama.
+Dalam rangka mempererat tali silaturahmi dan memperkuat kebersamaan di bulan suci Ramadan,
+kami mengundang seluruh rekan-rekan Department PGA – SHE untuk hadir pada acara Buka Bersama.
 <br><br>
-Semoga momen ini menjadi kesempatan indah untuk saling berbagi cerita, mempererat hubungan,
-dan memperkuat sinergi setelah aktivitas kerja, sambil bersama-sama menyambut waktu berbuka puasa.
+Semoga momen ini menjadi kesempatan indah untuk berbagi cerita, tawa, dan energi positif
+serta mempererat hubungan kekeluargaan antar rekan kerja.
 </p>
 </div>
-<div class="scroll">Scroll ke bawah ↓</div>
 </section>
 
-<!-- DETAIL -->
-<section class="details">
+<!-- DETAIL + FORM -->
+<section class="card-section">
 <div class="card">
-<h2>Detail Pelaksanaan Acara</h2>
+<h2>Detail Acara</h2>
+<p class="info">📅 11 Maret 2026</p>
+<p class="info">📍 Collaboration CentER TMMIN Plant 1</p>
+<p class="info">🕔 17.00 WIB – selesai</p>
+<p class="info">🕌 Perkiraan Adzan: 18.09 WIB</p>
 
-<p class="text-long">
-Acara Buka Bersama ini akan diselenggarakan sebagai wujud kebersamaan dan rasa syukur
-atas perjalanan yang telah kita lalui bersama. Kehadiran rekan-rekan sekalian akan
-menjadi kebahagiaan tersendiri dan menambah hangatnya suasana Ramadan.
-</p>
-
-<p class="info">📅 <span class="highlight">Tanggal:</span> 11 Maret 2026</p>
-<p class="info">📍 <span class="highlight">Lokasi:</span> Collaboration Centre TMMIN Plant 1</p>
-<p class="info">🕔 <span class="highlight">Waktu:</span> 17.00 WIB – selesai</p>
-<p class="info">🕌 <span class="highlight">Perkiraan Adzan Maghrib:</span> 18.09 WIB</p>
-
-<h2 style="margin-top:35px">Iuran Kebersamaan</h2>
+<h2 style="margin-top:30px">Iuran Kebersamaan</h2>
 <p class="info">• Kelas 1–6 : Rp100.000</p>
 <p class="info">• Kelas 7–8 : Rp200.000</p>
 <p class="info">• Kelas 9 ke atas : Rp300.000</p>
-<p class="info highlight">⏳ Deadline pembayaran: 5 Maret 2026</p>
+<p class="info highlight">⏳ Deadline: 5 Maret 2026</p>
+<p class="info highlight">🏦 Permata Bank 9913401244</p>
 
-<div class="countdown" id="countdown"></div>
-
-<button class="btn" onclick="alert('Terima kasih atas konfirmasinya. Sampai bertemu di acara! ✨')">Konfirmasi Kehadiran</button>
+<h2 style="margin-top:40px">Konfirmasi Kehadiran</h2>
+<input type="text" id="nama" placeholder="Nama Lengkap">
+<input type="text" id="noreg" placeholder="No Reg (7 Digit)" maxlength="7">
+<select id="status">
+<option value="Hadir">Hadir</option>
+<option value="Tidak Hadir">Tidak Hadir</option>
+</select>
+<button class="btn" onclick="simpanData()">Kirim Konfirmasi</button>
 </div>
 </section>
 
-<!-- FOOTER -->
+<section class="table-section">
+<h2>Rekap Konfirmasi</h2>
+<table id="dataTable">
+<thead>
+<tr><th>Nama</th><th>No Reg</th><th>Status</th></tr>
+</thead>
+<tbody></tbody>
+</table>
+<button class="btn" onclick="downloadCSV()">Download Rekap (CSV)</button>
+</section>
+
 <section class="footer">
 <div>
 <h2>Ramadan Kareem ✨</h2>
 <p>
-Mari kita jadikan momen ini sebagai ruang untuk memperkuat kebersamaan,
-menumbuhkan energi positif, serta mempererat hubungan kekeluargaan antar rekan kerja.
-Semoga setiap kebersamaan yang kita bangun membawa keberkahan,
-kelancaran, dan kesuksesan dalam setiap langkah kita ke depan.
-<br><br>
 Kami menantikan kehadiran rekan-rekan semua.
-Sampai jumpa di acara, dan jangan sampai terlewat!
+Semoga kebersamaan ini membawa keberkahan dan mempererat silaturahmi.
+Sampai jumpa di acara.
 </p>
 </div>
 </section>
 
 <script>
-const targetDate = new Date("March 11, 2026 17:00:00").getTime();
-const countdownEl = document.getElementById("countdown");
+let data = JSON.parse(localStorage.getItem('bukberData')) || [];
 
-setInterval(() => {
-const now = new Date().getTime();
-const distance = targetDate - now;
-
-const days = Math.floor(distance / (1000*60*60*24));
-const hours = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
-const minutes = Math.floor((distance % (1000*60*60))/(1000*60));
-
-if(distance > 0){
-countdownEl.innerHTML = "Menuju Acara: " + days + " Hari " + hours + " Jam " + minutes + " Menit";
-}else{
-countdownEl.innerHTML = "Acara Sedang Berlangsung 🎉";
+function renderTable(){
+const tbody = document.querySelector('#dataTable tbody');
+tbody.innerHTML = '';
+data.forEach(item => {
+const row = `<tr><td>${item.nama}</td><td>${item.noreg}</td><td>${item.status}</td></tr>`;
+tbody.innerHTML += row;
+});
 }
-},1000);
-</script>
 
-</body>
-</html>
+function simpanData(){
+const nama = document.getElementById('nama').value;
+const noreg = document.getElementById('noreg').value;
+const status = document.getElementById('status').value;
+
+if(nama === '' || noreg.length !== 7){
+alert('Isi nama dan No Reg 7 digit dengan benar');
+return;
+}
+
+data.push({nama,noreg,status});
+localStorage.setItem('bukberData', JSON.stringify(data));
+renderTable();
+alert('Data berhasil disimpan');
+document.getElementById('nama').value='';
+document.getElementById('noreg').value='';
+}
+
+function downloadCSV(){
+let csv = 'Nama,No Reg,Status\n';
+data.forEach(row => {
+csv += `${row
