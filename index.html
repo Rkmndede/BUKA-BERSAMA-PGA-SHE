@@ -12,8 +12,6 @@
 body{
   font-family:'Poppins',sans-serif;
   scroll-behavior:smooth;
-  background:#0f172a;
-  color:white;
   overflow-x:hidden;
 }
 
@@ -27,46 +25,52 @@ section{
   position:relative;
 }
 
-/* PREMIUM RAMADHAN BACKGROUND */
+/* ================= HERO RAMADHAN PREMIUM ================= */
 .hero{
-  background:linear-gradient(180deg,#0f172a,#1e293b);
+  background:
+    linear-gradient(rgba(15,23,42,0.85), rgba(15,23,42,0.95)),
+    url('https://images.unsplash.com/photo-1564769625905-50e93615e769?q=80&w=1600&auto=format&fit=crop');
+  background-size:cover;
+  background-position:center;
+  color:white;
 }
 
-.hero::before{
-  content:"";
+.moon{
   position:absolute;
-  width:600px;
-  height:600px;
-  background:radial-gradient(circle, rgba(250,204,21,0.3) 0%, transparent 70%);
-  top:-200px;
-  right:-200px;
-  animation:float 6s ease-in-out infinite alternate;
+  top:80px;
+  right:100px;
+  width:120px;
+  height:120px;
+  background:radial-gradient(circle,#facc15 40%,transparent 60%);
+  border-radius:50%;
+  box-shadow:0 0 40px #facc15;
+  animation:glow 3s ease-in-out infinite alternate;
 }
 
-@keyframes float{
-  from{transform:translateY(0px)}
-  to{transform:translateY(40px)}
+@keyframes glow{
+  from{opacity:0.7}
+  to{opacity:1}
 }
 
 h1{
   font-family:'Playfair Display',serif;
-  font-size:42px;
+  font-size:44px;
   color:#facc15;
-  margin-bottom:20px;
+  margin-bottom:25px;
 }
 
 .subtitle{
   font-size:18px;
-  opacity:0.85;
-  max-width:600px;
-  line-height:1.6;
+  max-width:750px;
+  line-height:1.8;
+  opacity:0.95;
 }
 
 .scroll{
   position:absolute;
   bottom:30px;
   font-size:14px;
-  opacity:0.6;
+  opacity:0.7;
   animation:fade 2s infinite alternate;
 }
 
@@ -75,31 +79,40 @@ h1{
   to{opacity:1}
 }
 
-/* CARD SECTION */
+/* ================= DETAIL SECTION ================= */
 .details{
-  background:linear-gradient(180deg,#fef3c7,#fde68a);
+  background:
+    linear-gradient(rgba(254,243,199,0.95), rgba(253,230,138,0.95)),
+    url('https://www.transparenttextures.com/patterns/arabesque.png');
+  background-size:contain;
   color:#1e293b;
 }
 
 .card{
   background:white;
   border-radius:30px;
-  padding:50px 40px;
-  max-width:700px;
+  padding:60px 45px;
+  max-width:850px;
   width:100%;
   box-shadow:0 30px 60px rgba(0,0,0,0.25);
   animation:fadeUp 1.2s ease;
 }
 
 @keyframes fadeUp{
-  from{opacity:0; transform:translateY(50px)}
+  from{opacity:0; transform:translateY(60px)}
   to{opacity:1; transform:translateY(0)}
 }
 
 .card h2{
   font-family:'Playfair Display',serif;
   color:#b45309;
-  margin-bottom:20px;
+  margin-bottom:25px;
+}
+
+.text-long{
+  line-height:1.8;
+  margin-bottom:25px;
+  font-size:16px;
 }
 
 .info{
@@ -120,11 +133,11 @@ h1{
 }
 
 .btn{
-  margin-top:30px;
+  margin-top:35px;
   background:#f59e0b;
   border:none;
-  padding:14px 28px;
-  border-radius:20px;
+  padding:15px 30px;
+  border-radius:25px;
   font-size:16px;
   cursor:pointer;
   transition:0.3s;
@@ -135,98 +148,92 @@ h1{
   color:white;
 }
 
-/* FOOTER */
+/* ================= FOOTER ================= */
 .footer{
-  background:#0f172a;
+  background:
+    linear-gradient(rgba(15,23,42,0.9), rgba(15,23,42,0.95)),
+    url('https://images.unsplash.com/photo-1609599006353-e629aaabfeae?q=80&w=1600&auto=format&fit=crop');
+  background-size:cover;
+  background-position:center;
+  color:white;
 }
 
 .footer h2{
   font-family:'Playfair Display',serif;
   color:#facc15;
-  margin-bottom:20px;
+  margin-bottom:25px;
 }
 
 .footer p{
-  max-width:600px;
-  opacity:0.8;
-  line-height:1.6;
-}
-
-/* Floating Lantern Effect */
-.lantern{
-  position:absolute;
-  width:40px;
-  height:60px;
-  background:linear-gradient(#facc15,#f59e0b);
-  border-radius:10px;
-  animation:lanternFloat 10s linear infinite;
-  opacity:0.6;
-}
-
-@keyframes lanternFloat{
-  from{transform:translateY(100vh)}
-  to{transform:translateY(-150px)}
+  max-width:800px;
+  line-height:1.8;
+  opacity:0.95;
 }
 </style>
 </head>
 <body>
 
-<!-- Floating Lanterns -->
-<div class="lantern" style="left:10%; animation-duration:12s"></div>
-<div class="lantern" style="left:30%; animation-duration:15s"></div>
-<div class="lantern" style="left:60%; animation-duration:18s"></div>
-<div class="lantern" style="left:80%; animation-duration:20s"></div>
-
-<!-- MUSIC -->
 <audio autoplay loop>
 <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8b5b0f6f7.mp3?filename=ramadan-background-110624.mp3" type="audio/mpeg">
 </audio>
 
-<!-- SLIDE 1 -->
+<!-- HERO -->
 <section class="hero">
+<div class="moon"></div>
 <div>
-<h1>🌙 Undangan Buka Bersama</h1>
+<h1>🌙 Undangan Buka Bersama Department PGA – SHE 🌙</h1>
 <p class="subtitle">
-Department PGA – SHE
+Dalam rangka mempererat tali silaturahmi serta memperkuat kebersamaan di bulan suci Ramadan yang penuh keberkahan,
+kami dengan penuh kehangatan mengundang seluruh rekan-rekan Department PGA – SHE
+untuk hadir dan meramaikan acara Buka Bersama.
 <br><br>
-Dalam rangka mempererat silaturahmi dan kebersamaan di bulan penuh berkah,
-kami mengundang seluruh rekan-rekan untuk hadir dalam acara buka bersama.
+Semoga momen ini menjadi kesempatan indah untuk saling berbagi cerita, mempererat hubungan,
+dan memperkuat sinergi setelah aktivitas kerja, sambil bersama-sama menyambut waktu berbuka puasa.
 </p>
 </div>
 <div class="scroll">Scroll ke bawah ↓</div>
 </section>
 
-<!-- SLIDE 2 -->
+<!-- DETAIL -->
 <section class="details">
 <div class="card">
-<h2>Detail Acara</h2>
-<p class="info">📅 <span class="highlight">11 Maret 2026</span></p>
-<p class="info">📍 Collaboration Centre TMMIN Plant 1</p>
-<p class="info">🕔 17.00 WIB – selesai</p>
-<p class="info">🕌 Perkiraan Adzan Maghrib: 18.09 WIB</p>
+<h2>Detail Pelaksanaan Acara</h2>
 
-<h2 style="margin-top:30px">Iuran</h2>
-<p class="info">Kelas 1–6 : Rp100.000</p>
-<p class="info">Kelas 7–8 : Rp200.000</p>
-<p class="info">Kelas 9 ke atas : Rp300.000</p>
-<p class="info highlight">⏳ Deadline: 5 Maret 2026</p>
+<p class="text-long">
+Acara Buka Bersama ini akan diselenggarakan sebagai wujud kebersamaan dan rasa syukur
+atas perjalanan yang telah kita lalui bersama. Kehadiran rekan-rekan sekalian akan
+menjadi kebahagiaan tersendiri dan menambah hangatnya suasana Ramadan.
+</p>
+
+<p class="info">📅 <span class="highlight">Tanggal:</span> 11 Maret 2026</p>
+<p class="info">📍 <span class="highlight">Lokasi:</span> Collaboration Centre TMMIN Plant 1</p>
+<p class="info">🕔 <span class="highlight">Waktu:</span> 17.00 WIB – selesai</p>
+<p class="info">🕌 <span class="highlight">Perkiraan Adzan Maghrib:</span> 18.09 WIB</p>
+
+<h2 style="margin-top:35px">Iuran Kebersamaan</h2>
+<p class="info">• Kelas 1–6 : Rp100.000</p>
+<p class="info">• Kelas 7–8 : Rp200.000</p>
+<p class="info">• Kelas 9 ke atas : Rp300.000</p>
+<p class="info highlight">⏳ Deadline pembayaran: 5 Maret 2026</p>
 
 <div class="countdown" id="countdown"></div>
 
-<button class="btn" onclick="alert('Terima kasih, sampai bertemu di acara! ✨')">Konfirmasi Kehadiran</button>
+<button class="btn" onclick="alert('Terima kasih atas konfirmasinya. Sampai bertemu di acara! ✨')">Konfirmasi Kehadiran</button>
 </div>
 </section>
 
-<!-- SLIDE 3 -->
+<!-- FOOTER -->
 <section class="footer">
 <div>
 <h2>Ramadan Kareem ✨</h2>
 <p>
-Mari kita jadikan momen ini sebagai ruang berbagi cerita, tawa, dan energi positif
-setelah hari kerja, sambil menyambut waktu berbuka bersama.
-Kehadiran rekan-rekan akan membuat kebersamaan ini semakin hangat.
+Mari kita jadikan momen ini sebagai ruang untuk memperkuat kebersamaan,
+menumbuhkan energi positif, serta mempererat hubungan kekeluargaan antar rekan kerja.
+Semoga setiap kebersamaan yang kita bangun membawa keberkahan,
+kelancaran, dan kesuksesan dalam setiap langkah kita ke depan.
 <br><br>
-Sampai jumpa di acara, jangan sampai terlewat!
+Kami menantikan kehadiran rekan-rekan semua.
+Sampai jumpa di acara, dan jangan sampai terlewat!
 </p>
 </div>
 </section>
