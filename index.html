@@ -23,6 +23,7 @@ left:0;
 z-index:-1;
 }
 
+/* OPENING */
 .opening{
 position:fixed;
 width:100%;
@@ -41,14 +42,19 @@ transition:opacity .5s ease;
 .opening h1{
 font-family:'Playfair Display',serif;
 color:#facc15;
-font-size:clamp(28px,5vw,42px);
-margin-bottom:20px;
+font-size:clamp(26px,5vw,40px);
+margin-bottom:10px;
+}
+
+.opening p{
+opacity:.8;
+margin-bottom:25px;
 }
 
 .opening button{
 background:#facc15;
 border:none;
-padding:15px 35px;
+padding:14px 30px;
 border-radius:40px;
 font-weight:600;
 cursor:pointer;
@@ -62,6 +68,7 @@ animation:pulse 2s infinite;
 100%{box-shadow:0 0 10px rgba(250,204,21,.4)}
 }
 
+/* HERO */
 .hero{
 min-height:100vh;
 display:flex;
@@ -73,18 +80,19 @@ padding:40px 20px;
 
 .hero h2{
 font-family:'Playfair Display',serif;
-font-size:clamp(30px,6vw,50px);
+font-size:clamp(28px,6vw,48px);
 color:#facc15;
 margin-bottom:20px;
 }
 
 .hero p{
 max-width:800px;
-line-height:1.9;
-font-size:clamp(14px,3.5vw,18px);
+line-height:1.8;
+font-size:clamp(14px,3.5vw,17px);
 opacity:.9;
 }
 
+/* SECTION */
 .section{
 padding:80px 20px;
 text-align:center;
@@ -95,64 +103,63 @@ max-width:1000px;
 margin:auto;
 background:rgba(255,255,255,0.05);
 backdrop-filter:blur(12px);
-padding:clamp(30px,5vw,70px);
+padding:clamp(25px,5vw,60px);
 border-radius:30px;
 border:1px solid rgba(250,204,21,0.4);
 box-shadow:0 30px 80px rgba(0,0,0,.5);
 }
 
-.card h3{
+.card h2{
 font-family:'Playfair Display',serif;
 color:#facc15;
-font-size:clamp(22px,5vw,32px);
-margin-bottom:20px;
+margin-top:20px;
+margin-bottom:15px;
 }
 
 .info{
-margin:12px 0;
-font-size:clamp(14px,3.5vw,17px);
+margin:8px 0;
+font-size:clamp(13px,3.2vw,16px);
 }
 
+.highlight{
+color:#facc15;
+font-weight:600;
+}
+
+/* COUNTDOWN */
 .countdown-wrapper{
 display:flex;
 justify-content:center;
-gap:15px;
-flex-wrap:wrap;
-margin-top:40px;
+gap:8px;
+flex-wrap:nowrap;
+margin-top:30px;
 }
 
 .time-box{
 background:rgba(250,204,21,0.1);
 border:1px solid rgba(250,204,21,0.5);
-padding:20px;
-border-radius:15px;
-min-width:80px;
-box-shadow:0 10px 30px rgba(0,0,0,.5);
+padding:10px 8px;
+border-radius:12px;
+min-width:60px;
 }
 
 .time-box span{
 display:block;
-font-size:28px;
+font-size:18px;
 font-weight:700;
 color:#facc15;
 }
 
 .time-box small{
-font-size:12px;
+font-size:11px;
 opacity:.7;
 }
 
+/* FOOTER */
 .footer{
-padding:100px 20px;
+padding:80px 20px;
 text-align:center;
 background:linear-gradient(#000,#111);
-}
-
-.footer h2{
-font-family:'Playfair Display',serif;
-color:#facc15;
-font-size:clamp(22px,5vw,32px);
-margin-bottom:20px;
 }
 
 .arabic{
@@ -167,9 +174,11 @@ direction:rtl;
 
 <canvas id="bgCanvas"></canvas>
 
+<!-- OPENING -->
 <div class="opening" id="opening">
-<h1>🌙 Assalamualaikum Warahmatullahi Wabarakatuh 🌙</h1>
-<button onclick="startExperience()">Buka Undangan</button>
+<h1>Buka Bersama PGA SHE</h1>
+<p>Kepada Bapak/Ibu</p>
+<button onclick="startExperience()">Buka Undangan 🎵</button>
 </div>
 
 <audio id="music" loop>
@@ -181,25 +190,37 @@ direction:rtl;
 <h2>Ramadan Kareem ✨</h2>
 <p>
 Assalamualaikum Warahmatullahi Wabarakatuh.<br><br>
-Ramadan adalah bulan penuh ampunan dan keberkahan.
-Mari kita pererat silaturahmi dalam suasana hangat penuh kebersamaan.
-Semoga momen ini menjadi ladang pahala dan kebaikan untuk kita semua.
+Dengan penuh rasa syukur dan kebahagiaan,
+kami mengundang Bapak/Ibu untuk hadir dalam acara
+Buka Bersama PGA SHE sebagai momen mempererat silaturahmi
+dan kebersamaan di bulan suci Ramadan.
 </p>
 </div>
 </section>
 
 <section class="section">
 <div class="card">
-<h3>Detail Acara</h3>
-<p class="info">📅 Rabu, 11 Maret 2026</p>
+
+<h2>Detail Acara</h2>
+<p class="info">📅 Rabu 11 Maret 2026</p>
 <p class="info">📍 Collaboration Center TMMIN Plant 1</p>
 <p class="info">🕔 17.00 WIB – selesai</p>
+<p class="info">🕌 Perkiraan Adzan: 18.09 WIB</p>
 
-<br>
-<h3>Konfirmasi / Transfer</h3>
-<p class="info">💳 Bank PERMATA</p>
-<p class="info">No. Rekening: 9913401244 (DEDE RUKMANA)</p>
-<p class="info">a.n. PGA SHE</p>
+<h2 style="margin-top:30px">Iuran Kebersamaan</h2>
+<p class="info">• Kelas 1–6 : Rp100.000</p>
+<p class="info">• Kelas 7–8 : Rp200.000</p>
+<p class="info">• Kelas 9 ke atas : Rp300.000</p>
+<p class="info highlight">⏳ Deadline: 5 Maret 2026</p>
+<p class="info highlight">🏦 Permata Bank 9913401244</p>
+<p class="info highlight">a.n Dede Rukmana</p>
+
+<p class="info" style="margin-top:15px">
+📲 Konfirmasi bukti transfer via WhatsApp:<br>
+<a href="https://wa.me/6285721243437" target="_blank" style="color:#facc15;text-decoration:none;">
+Klik di sini untuk konfirmasi
+</a>
+</p>
 
 <div class="countdown-wrapper">
 <div class="time-box"><span id="days">0</span><small>Hari</small></div>
@@ -213,19 +234,18 @@ Semoga momen ini menjadi ladang pahala dan kebaikan untuk kita semua.
 
 <section class="footer">
 <h2>Doa Ramadan 🌙</h2>
-
 <div class="arabic">
-اللّهُمَّ بَارِكْ لَنَا فِي رَمَضَانَ وَاغْفِرْ لَنَا ذُنُوبَنَا وَتَقَبَّلْ مِنَّا صِيَامَنَا وَقِيَامَنَا  
+اللّهُمَّ بَارِكْ لَنَا فِي رَمَضَانَ وَاغْفِرْ لَنَا ذُنُوبَنَا وَتَقَبَّلْ مِنَّا صِيَامَنَا وَقِيَامَنَا
 </div>
 
 <p style="margin-top:20px;opacity:.8">
-"Ya Allah, berkahilah kami di bulan Ramadan, ampuni dosa-dosa kami,
-dan terimalah puasa serta ibadah kami."
+Ya Allah, berkahilah kami di bulan Ramadan,
+ampuni dosa-dosa kami dan terimalah ibadah kami.
 </p>
 
-<br><br>
-
-<h2>Wassalamualaikum Warahmatullahi Wabarakatuh 🌙✨</h2>
+<h2 style="margin-top:30px">
+Wassalamualaikum Warahmatullahi Wabarakatuh
+</h2>
 </section>
 
 <script>
@@ -251,26 +271,15 @@ document.getElementById("seconds").innerText=Math.floor((diff%(1000*60))/1000);
 }
 },1000);
 
+/* PARTICLES */
 const canvas=document.getElementById("bgCanvas");
 const ctx=canvas.getContext("2d");
-
-function resize(){
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-}
-resize();
-window.addEventListener("resize",resize);
-
+function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
+resize();window.addEventListener("resize",resize);
 let particles=[];
 for(let i=0;i<120;i++){
-particles.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-size:Math.random()*3+1,
-speed:Math.random()*1+0.5
-});
+particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,size:Math.random()*3+1,speed:Math.random()*1+0.5});
 }
-
 function animate(){
 ctx.clearRect(0,0,canvas.width,canvas.height);
 particles.forEach(p=>{
@@ -279,10 +288,7 @@ ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
 ctx.fillStyle="rgba(250,204,21,0.8)";
 ctx.fill();
 p.y+=p.speed;
-if(p.y>canvas.height){
-p.y=0;
-p.x=Math.random()*canvas.width;
-}
+if(p.y>canvas.height){p.y=0;p.x=Math.random()*canvas.width;}
 });
 requestAnimationFrame(animate);
 }
