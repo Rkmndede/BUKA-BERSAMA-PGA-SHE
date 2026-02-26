@@ -25,7 +25,7 @@ left:0;
 z-index:-1;
 }
 
-/* OPENING */
+/* OPENING SCREEN */
 .opening{
 position:fixed;
 width:100%;
@@ -38,23 +38,38 @@ align-items:center;
 z-index:9999;
 text-align:center;
 padding:20px;
+transition:opacity .5s ease;
 }
 
 .opening h1{
 font-family:'Playfair Display',serif;
 color:#facc15;
 font-size:clamp(28px,5vw,42px);
-margin-bottom:20px;
+margin-bottom:15px;
+}
+
+.opening p{
+opacity:.8;
+margin-bottom:25px;
+font-size:14px;
 }
 
 .opening button{
 background:#facc15;
 border:none;
-padding:14px 30px;
+padding:15px 35px;
 border-radius:40px;
 font-weight:600;
 cursor:pointer;
 transition:.3s;
+box-shadow:0 0 20px rgba(250,204,21,.6);
+animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+0%{box-shadow:0 0 10px rgba(250,204,21,.4)}
+50%{box-shadow:0 0 30px rgba(250,204,21,.9)}
+100%{box-shadow:0 0 10px rgba(250,204,21,.4)}
 }
 
 .opening button:hover{
@@ -80,7 +95,7 @@ margin-bottom:20px;
 
 .hero p{
 max-width:800px;
-line-height:1.8;
+line-height:1.9;
 font-size:clamp(14px,3.5vw,18px);
 opacity:.9;
 }
@@ -151,6 +166,12 @@ color:#facc15;
 font-size:clamp(22px,5vw,32px);
 }
 
+.footer p{
+margin-top:20px;
+opacity:.8;
+font-size:14px;
+}
+
 /* MUSIC PANEL */
 .music-panel{
 position:fixed;
@@ -182,7 +203,8 @@ width:80px;
 
 <div class="opening" id="opening">
 <h1>🌙 Undangan Buka Bersama 🌙</h1>
-<button onclick="startExperience()">Buka Undangan</button>
+<p>Klik tombol di bawah untuk membuka undangan dan memulai musik ✨</p>
+<button onclick="startExperience()">Buka Undangan & Putar Musik 🎵</button>
 </div>
 
 <div class="moon"></div>
@@ -201,10 +223,17 @@ Volume <input type="range" min="0" max="1" step="0.05" value="0.5" onchange="set
 <div>
 <h2>Ramadan Kareem ✨</h2>
 <p>
-Dengan penuh rasa syukur di bulan suci Ramadan,
-kami mengundang keluarga besar Department PGA – SHE
-untuk hadir dalam acara Buka Bersama yang penuh keberkahan.
-Semoga momen ini mempererat silaturahmi dan kebersamaan.
+Ramadan adalah bulan penuh ampunan dan keberkahan.
+Di momen yang indah ini, mari kita sejenak menenangkan hati,
+mempererat silaturahmi, serta berbagi kebahagiaan bersama.
+
+Dengan penuh rasa syukur, kami mengundang keluarga besar
+Department PGA – SHE untuk hadir dalam acara Buka Bersama
+yang insyaAllah menjadi momen hangat, sederhana,
+namun penuh makna dan kebersamaan.
+
+Semoga setiap langkah menuju acara ini
+menjadi bagian dari kebaikan dan keberkahan untuk kita semua.
 </p>
 </div>
 </section>
@@ -222,17 +251,26 @@ Semoga momen ini mempererat silaturahmi dan kebersamaan.
 
 <section class="footer">
 <h2>Sampai Jumpa di Acara 🌙✨</h2>
+<p>
+Terima kasih atas perhatian dan kehadiran Bapak/Ibu sekalian.
+Semoga Allah SWT melimpahkan kesehatan,
+kemudahan, serta keberkahan di setiap langkah kita.
+Aamiin Ya Rabbal Alamin.
+</p>
 </section>
 
 <script>
-/* MUSIC */
+/* MUSIC SYSTEM */
 const music=document.getElementById("music");
 
 function startExperience(){
+document.getElementById("opening").style.opacity="0";
+setTimeout(()=>{
 document.getElementById("opening").style.display="none";
+},500);
+
 music.volume=0;
-music.play();
-fadeIn();
+music.play().then(()=>{fadeIn();}).catch(()=>{});
 }
 
 function fadeIn(){
@@ -268,7 +306,7 @@ document.getElementById("countdown").innerHTML=
 }
 },1000);
 
-/* PARTICLE + STAR ANIMATION */
+/* GOLD PARTICLES */
 const canvas=document.getElementById("bgCanvas");
 const ctx=canvas.getContext("2d");
 
