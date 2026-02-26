@@ -16,7 +16,6 @@ color:white;
 overflow-x:hidden;
 }
 
-/* BACKGROUND */
 canvas{
 position:fixed;
 top:0;
@@ -24,7 +23,6 @@ left:0;
 z-index:-1;
 }
 
-/* OPENING */
 .opening{
 position:fixed;
 width:100%;
@@ -64,7 +62,6 @@ animation:pulse 2s infinite;
 100%{box-shadow:0 0 10px rgba(250,204,21,.4)}
 }
 
-/* HERO */
 .hero{
 min-height:100vh;
 display:flex;
@@ -88,7 +85,6 @@ font-size:clamp(14px,3.5vw,18px);
 opacity:.9;
 }
 
-/* SECTION */
 .section{
 padding:80px 20px;
 text-align:center;
@@ -117,7 +113,6 @@ margin:12px 0;
 font-size:clamp(14px,3.5vw,17px);
 }
 
-/* COUNTDOWN BOX */
 .countdown-wrapper{
 display:flex;
 justify-content:center;
@@ -147,7 +142,6 @@ font-size:12px;
 opacity:.7;
 }
 
-/* FOOTER */
 .footer{
 padding:100px 20px;
 text-align:center;
@@ -158,6 +152,14 @@ background:linear-gradient(#000,#111);
 font-family:'Playfair Display',serif;
 color:#facc15;
 font-size:clamp(22px,5vw,32px);
+margin-bottom:20px;
+}
+
+.arabic{
+font-size:20px;
+line-height:2;
+margin-top:20px;
+direction:rtl;
 }
 </style>
 </head>
@@ -166,7 +168,7 @@ font-size:clamp(22px,5vw,32px);
 <canvas id="bgCanvas"></canvas>
 
 <div class="opening" id="opening">
-<h1>🌙 Undangan Buka Bersama 🌙</h1>
+<h1>🌙 Assalamualaikum Warahmatullahi Wabarakatuh 🌙</h1>
 <button onclick="startExperience()">Buka Undangan & Putar Musik 🎵</button>
 </div>
 
@@ -178,6 +180,7 @@ font-size:clamp(22px,5vw,32px);
 <div>
 <h2>Ramadan Kareem ✨</h2>
 <p>
+Assalamualaikum Warahmatullahi Wabarakatuh.<br><br>
 Ramadan adalah bulan penuh ampunan dan keberkahan.
 Mari kita pererat silaturahmi dalam suasana hangat penuh kebersamaan.
 Semoga momen ini menjadi ladang pahala dan kebaikan untuk kita semua.
@@ -192,6 +195,12 @@ Semoga momen ini menjadi ladang pahala dan kebaikan untuk kita semua.
 <p class="info">📍 Collaboration Center TMMIN Plant 1</p>
 <p class="info">🕔 17.00 WIB – selesai</p>
 
+<br>
+<h3>Konfirmasi / Transfer</h3>
+<p class="info">💳 Bank PERMATA</p>
+<p class="info">No. Rekening: 9913401244 (DEDE RUKMANA)</p>
+<p class="info">a.n. PGA SHE</p>
+
 <div class="countdown-wrapper">
 <div class="time-box"><span id="days">0</span><small>Hari</small></div>
 <div class="time-box"><span id="hours">0</span><small>Jam</small></div>
@@ -203,29 +212,37 @@ Semoga momen ini menjadi ladang pahala dan kebaikan untuk kita semua.
 </section>
 
 <section class="footer">
-<h2>Sampai Jumpa di Acara 🌙✨</h2>
+<h2>Doa Ramadan 🌙</h2>
+
+<div class="arabic">
+اللّهُمَّ بَارِكْ لَنَا فِي رَمَضَانَ وَاغْفِرْ لَنَا ذُنُوبَنَا وَتَقَبَّلْ مِنَّا صِيَامَنَا وَقِيَامَنَا  
+</div>
+
+<p style="margin-top:20px;opacity:.8">
+"Ya Allah, berkahilah kami di bulan Ramadan, ampuni dosa-dosa kami,
+dan terimalah puasa serta ibadah kami."
+</p>
+
+<br><br>
+
+<h2>Wassalamualaikum Warahmatullahi Wabarakatuh 🌙✨</h2>
 </section>
 
 <script>
-/* MUSIC (ONLY TRIGGER FROM OPEN BUTTON) */
 const music=document.getElementById("music");
-music.volume=0.5;
+music.volume=0.6;
 
 function startExperience(){
 document.getElementById("opening").style.opacity="0";
-setTimeout(()=>{
-document.getElementById("opening").style.display="none";
-},500);
+setTimeout(()=>{document.getElementById("opening").style.display="none";},500);
 music.play();
 }
 
-/* COUNTDOWN */
 const target=new Date("March 11, 2026 17:00:00").getTime();
 
 setInterval(()=>{
 const now=new Date().getTime();
 const diff=target-now;
-
 if(diff>0){
 document.getElementById("days").innerText=Math.floor(diff/(1000*60*60*24));
 document.getElementById("hours").innerText=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
@@ -234,7 +251,6 @@ document.getElementById("seconds").innerText=Math.floor((diff%(1000*60))/1000);
 }
 },1000);
 
-/* GOLD PARTICLES */
 const canvas=document.getElementById("bgCanvas");
 const ctx=canvas.getContext("2d");
 
@@ -257,20 +273,17 @@ speed:Math.random()*1+0.5
 
 function animate(){
 ctx.clearRect(0,0,canvas.width,canvas.height);
-
 particles.forEach(p=>{
 ctx.beginPath();
 ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
 ctx.fillStyle="rgba(250,204,21,0.8)";
 ctx.fill();
-
 p.y+=p.speed;
 if(p.y>canvas.height){
 p.y=0;
 p.x=Math.random()*canvas.width;
 }
 });
-
 requestAnimationFrame(animate);
 }
 animate();
