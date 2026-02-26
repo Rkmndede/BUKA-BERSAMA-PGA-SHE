@@ -17,7 +17,7 @@ overflow-x:hidden;
 scroll-behavior:smooth;
 }
 
-/* STAR BACKGROUND */
+/* BACKGROUND CANVAS */
 canvas{
 position:fixed;
 top:0;
@@ -37,20 +37,20 @@ justify-content:center;
 align-items:center;
 z-index:9999;
 text-align:center;
+padding:20px;
 }
 
 .opening h1{
 font-family:'Playfair Display',serif;
 color:#facc15;
-font-size:42px;
+font-size:clamp(28px,5vw,42px);
 margin-bottom:20px;
-animation:fadeIn 2s ease;
 }
 
 .opening button{
 background:#facc15;
 border:none;
-padding:15px 35px;
+padding:14px 30px;
 border-radius:40px;
 font-weight:600;
 cursor:pointer;
@@ -68,33 +68,33 @@ display:flex;
 justify-content:center;
 align-items:center;
 text-align:center;
-padding:40px;
+padding:40px 20px;
 }
 
 .hero h2{
 font-family:'Playfair Display',serif;
-font-size:50px;
+font-size:clamp(30px,6vw,50px);
 color:#facc15;
 margin-bottom:20px;
 }
 
 .hero p{
 max-width:800px;
-line-height:1.9;
-font-size:18px;
+line-height:1.8;
+font-size:clamp(14px,3.5vw,18px);
 opacity:.9;
 }
 
-/* GLOW MOON */
+/* MOON */
 .moon{
-width:150px;
-height:150px;
+width:120px;
+height:120px;
 background:radial-gradient(circle,#facc15 20%,transparent 70%);
 border-radius:50%;
 position:absolute;
-top:80px;
-right:80px;
-filter:blur(20px);
+top:60px;
+right:40px;
+filter:blur(25px);
 animation:float 6s ease-in-out infinite;
 }
 
@@ -105,7 +105,7 @@ animation:float 6s ease-in-out infinite;
 
 /* SECTION */
 .section{
-padding:120px 20px;
+padding:80px 20px;
 text-align:center;
 }
 
@@ -114,7 +114,7 @@ max-width:900px;
 margin:auto;
 background:rgba(255,255,255,0.05);
 backdrop-filter:blur(12px);
-padding:70px;
+padding:clamp(30px,5vw,70px);
 border-radius:30px;
 border:1px solid rgba(250,204,21,0.4);
 box-shadow:0 30px 80px rgba(0,0,0,.5);
@@ -123,23 +123,24 @@ box-shadow:0 30px 80px rgba(0,0,0,.5);
 .card h3{
 font-family:'Playfair Display',serif;
 color:#facc15;
-font-size:32px;
+font-size:clamp(22px,5vw,32px);
 margin-bottom:20px;
 }
 
-.info{margin:12px 0;font-size:17px}
+.info{
+margin:12px 0;
+font-size:clamp(14px,3.5vw,17px);
+}
 
-/* COUNTDOWN */
 .countdown{
-margin-top:40px;
-font-size:24px;
+margin-top:30px;
+font-size:clamp(18px,4vw,24px);
 color:#facc15;
 font-weight:600;
 }
 
-/* FOOTER */
 .footer{
-padding:120px 20px;
+padding:100px 20px;
 text-align:center;
 background:linear-gradient(#000,#111);
 }
@@ -147,16 +148,16 @@ background:linear-gradient(#000,#111);
 .footer h2{
 font-family:'Playfair Display',serif;
 color:#facc15;
-font-size:32px;
+font-size:clamp(22px,5vw,32px);
 }
 
 /* MUSIC PANEL */
 .music-panel{
 position:fixed;
-bottom:20px;
-right:20px;
+bottom:15px;
+right:15px;
 background:#facc15;
-padding:15px;
+padding:12px;
 border-radius:20px;
 box-shadow:0 15px 40px rgba(0,0,0,.4);
 }
@@ -171,18 +172,13 @@ font-weight:600;
 }
 
 .music-panel input{
-width:100px;
-}
-
-@keyframes fadeIn{
-from{opacity:0}
-to{opacity:1}
+width:80px;
 }
 </style>
 </head>
 <body>
 
-<canvas id="stars"></canvas>
+<canvas id="bgCanvas"></canvas>
 
 <div class="opening" id="opening">
 <h1>🌙 Undangan Buka Bersama 🌙</h1>
@@ -191,14 +187,14 @@ to{opacity:1}
 
 <div class="moon"></div>
 
-<audio id="music" loop></audio>
+<audio id="music" loop>
+<source src="videoplayback.m4a" type="audio/mp4">
+</audio>
 
 <div class="music-panel">
 <button onclick="playMusic()">▶</button>
-<button onclick="pauseMusic()">⏸</button>
-<button onclick="nextSong()">⏭</button>
-<br>
-Volume <input type="range" min="0" max="1" step="0.1" onchange="setVolume(this.value)">
+<button onclick="pauseMusic()">⏸</button><br>
+Volume <input type="range" min="0" max="1" step="0.05" value="0.5" onchange="setVolume(this.value)">
 </div>
 
 <section class="hero">
@@ -229,68 +225,89 @@ Semoga momen ini mempererat silaturahmi dan kebersamaan.
 </section>
 
 <script>
-/* MUSIC SYSTEM */
-const songs=[
-"https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8b5b0f6f7.mp3",
-"https://cdn.pixabay.com/download/audio/2021/09/06/audio_0a3bdf2c9b.mp3",
-"https://cdn.pixabay.com/download/audio/2022/04/27/audio_4a1bb5a7e6.mp3"
-];
-
-let currentSong=0;
+/* MUSIC */
 const music=document.getElementById("music");
 
 function startExperience(){
 document.getElementById("opening").style.display="none";
-music.src=songs[currentSong];
-music.volume=0.5;
+music.volume=0;
 music.play();
+fadeIn();
+}
+
+function fadeIn(){
+let vol=0;
+let interval=setInterval(()=>{
+if(vol<0.5){
+vol+=0.02;
+music.volume=vol;
+}else clearInterval(interval);
+},200);
 }
 
 function playMusic(){music.play();}
 function pauseMusic(){music.pause();}
-function nextSong(){
-currentSong=(currentSong+1)%songs.length;
-music.src=songs[currentSong];
-music.play();
-}
 function setVolume(val){music.volume=val;}
+
+document.addEventListener("visibilitychange",()=>{
+if(document.hidden){music.pause();}
+else{music.play().catch(()=>{});}
+});
 
 /* COUNTDOWN */
 const target=new Date("March 11, 2026 17:00:00").getTime();
 setInterval(()=>{
 const now=new Date().getTime();
 const diff=target-now;
+if(diff>0){
 const d=Math.floor(diff/(1000*60*60*24));
 const h=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
 const m=Math.floor((diff%(1000*60*60))/(1000*60));
 document.getElementById("countdown").innerHTML=
 `Menuju Acara: ${d} Hari ${h} Jam ${m} Menit`;
+}
 },1000);
 
-/* STAR ANIMATION */
-const canvas=document.getElementById("stars");
+/* PARTICLE + STAR ANIMATION */
+const canvas=document.getElementById("bgCanvas");
 const ctx=canvas.getContext("2d");
+
+function resize(){
 canvas.width=window.innerWidth;
 canvas.height=window.innerHeight;
+}
+resize();
+window.addEventListener("resize",resize);
 
-let stars=[];
-for(let i=0;i<150;i++){
-stars.push({x:Math.random()*canvas.width,
+let particles=[];
+for(let i=0;i<120;i++){
+particles.push({
+x:Math.random()*canvas.width,
 y:Math.random()*canvas.height,
-r:Math.random()*2});
+size:Math.random()*3+1,
+speed:Math.random()*1+0.5
+});
 }
 
-function drawStars(){
+function animate(){
 ctx.clearRect(0,0,canvas.width,canvas.height);
-ctx.fillStyle="white";
-stars.forEach(s=>{
+
+particles.forEach(p=>{
 ctx.beginPath();
-ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+ctx.fillStyle="rgba(250,204,21,0.8)";
 ctx.fill();
-});
-requestAnimationFrame(drawStars);
+
+p.y+=p.speed;
+if(p.y>canvas.height){
+p.y=0;
+p.x=Math.random()*canvas.width;
 }
-drawStars();
+});
+
+requestAnimationFrame(animate);
+}
+animate();
 </script>
 
 </body>
