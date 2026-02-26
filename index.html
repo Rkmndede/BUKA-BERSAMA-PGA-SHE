@@ -1,74 +1,178 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>Undangan Buka Bersama</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      background: linear-gradient(to bottom, #fde68a, #fcd34d);
-      padding: 40px;
-    }
-    .card {
-      background: white;
-      padding: 30px;
-      border-radius: 20px;
-      max-width: 500px;
-      margin: auto;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    }
-    h1 { color: #b45309; }
-    h2 { color: #ea580c; }
-    button {
-      background: #f59e0b;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-    button:hover {
-      background: #d97706;
-      color: white;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Undangan Buka Bersama</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{scroll-behavior:smooth;overflow-x:hidden}
+section{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:40px 20px;
+}
+
+.hero{
+  background:linear-gradient(180deg,#0f172a,#1e293b);
+  color:white;
+  flex-direction:column;
+}
+
+.hero h1{
+  font-size:40px;
+  margin-bottom:15px;
+  color:#facc15;
+}
+
+.hero p{
+  opacity:0.9;
+}
+
+.scroll{
+  margin-top:40px;
+  font-size:14px;
+  opacity:0.7;
+  animation:fade 2s infinite alternate;
+}
+
+@keyframes fade{
+  from{opacity:0.3}
+  to{opacity:1}
+}
+
+.card-section{
+  background:linear-gradient(180deg,#fef3c7,#fde68a);
+}
+
+.card{
+  background:white;
+  padding:40px;
+  border-radius:25px;
+  max-width:600px;
+  width:100%;
+  box-shadow:0 20px 40px rgba(0,0,0,0.2);
+}
+
+.card h2{
+  color:#b45309;
+  margin-bottom:15px;
+}
+
+.detail{
+  margin:15px 0;
+  font-size:16px;
+}
+
+.btn{
+  margin-top:25px;
+  background:#f59e0b;
+  border:none;
+  padding:14px 25px;
+  border-radius:15px;
+  font-size:16px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.btn:hover{
+  background:#d97706;
+  color:white;
+}
+
+.footer{
+  background:#0f172a;
+  color:white;
+  flex-direction:column;
+}
+
+.countdown{
+  font-size:20px;
+  margin-top:20px;
+  font-weight:600;
+  color:#facc15;
+}
+</style>
 </head>
 <body>
 
-<div class="card">
+<!-- Background Music -->
+<audio autoplay loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8b5b0f6f7.mp3?filename=ramadan-background-110624.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Slide 1 -->
+<section class="hero">
   <h1>Undangan Buka Bersama</h1>
   <p>Kepada Yth:</p>
-  <h2 id="namaTamu">Sahabat Baik</h2>
+  <h2 id="namaTamu" style="margin-top:10px">Sahabat Baik</h2>
+  <div class="scroll">Scroll ke bawah ↓</div>
+</section>
 
-  <p>
-    Dengan penuh kebahagiaan kami mengundang Anda
-    untuk hadir dalam acara Buka Puasa Bersama.
+<!-- Slide 2 -->
+<section class="card-section">
+  <div class="card">
+    <h2>Acara Buka Puasa Bersama</h2>
+    <p class="detail"><b>Hari/Tanggal:</b> Sabtu, 15 Maret 2026</p>
+    <p class="detail"><b>Waktu:</b> 17.00 WIB - Selesai</p>
+    <p class="detail"><b>Tempat:</b> Rumah / Lokasi Anda</p>
+
+    <div class="countdown" id="countdown"></div>
+
+    <button class="btn" onclick="konfirmasi()">Konfirmasi Kehadiran</button>
+  </div>
+</section>
+
+<!-- Slide 3 -->
+<section class="footer">
+  <h2>Ramadan Kareem 🌙</h2>
+  <p style="margin-top:15px;max-width:500px">
+    Semoga kebersamaan ini membawa keberkahan,
+    mempererat silaturahmi, dan menambah kebaikan
+    di bulan suci Ramadan.
   </p>
 
-  <p><b>Hari/Tanggal:</b> Sabtu, 15 Maret 2026</p>
-  <p><b>Waktu:</b> 17.00 WIB - Selesai</p>
-  <p><b>Tempat:</b> Rumah / Lokasi Anda</p>
-
-  <br>
-  <button onclick="konfirmasi()">Konfirmasi Kehadiran</button>
-
-  <p style="margin-top:30px;">
-    Hormat kami,<br>
-    Panitia
+  <p style="margin-top:30px;opacity:0.7">
+    Hormat kami,<br>Panitia
   </p>
-</div>
+</section>
 
 <script>
-  const urlParams = new URLSearchParams(window.location.search);
-  const nama = urlParams.get('to');
-  if(nama){
-    document.getElementById('namaTamu').innerText = nama;
-  }
+// Nama tamu dari URL
+const urlParams = new URLSearchParams(window.location.search);
+const nama = urlParams.get('to');
+if(nama){
+  document.getElementById('namaTamu').innerText = nama;
+}
 
-  function konfirmasi(){
-    alert("Terima kasih atas konfirmasinya 😊");
+function konfirmasi(){
+  alert("Terima kasih atas konfirmasinya 😊");
+}
+
+// Countdown
+const targetDate = new Date("March 15, 2026 17:00:00").getTime();
+const countdownEl = document.getElementById("countdown");
+
+setInterval(() => {
+  const now = new Date().getTime();
+  const distance = targetDate - now;
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+  if(distance > 0){
+    countdownEl.innerHTML = "Menuju Acara: " + days + " Hari " + hours + " Jam " + minutes + " Menit";
+  } else {
+    countdownEl.innerHTML = "Acara Sedang Berlangsung 🎉";
   }
+},1000);
 </script>
 
 </body>
