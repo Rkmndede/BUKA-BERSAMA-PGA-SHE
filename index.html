@@ -3,42 +3,70 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Undangan Buka Bersama</title>
+<title>Undangan Buka Bersama PGA – SHE</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
-body{scroll-behavior:smooth;overflow-x:hidden}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Poppins',sans-serif;
+  scroll-behavior:smooth;
+  background:#0f172a;
+  color:white;
+  overflow-x:hidden;
+}
+
 section{
   min-height:100vh;
   display:flex;
   justify-content:center;
   align-items:center;
   text-align:center;
-  padding:40px 20px;
+  padding:60px 20px;
+  position:relative;
 }
 
+/* PREMIUM RAMADHAN BACKGROUND */
 .hero{
   background:linear-gradient(180deg,#0f172a,#1e293b);
-  color:white;
-  flex-direction:column;
 }
 
-.hero h1{
-  font-size:40px;
-  margin-bottom:15px;
+.hero::before{
+  content:"";
+  position:absolute;
+  width:600px;
+  height:600px;
+  background:radial-gradient(circle, rgba(250,204,21,0.3) 0%, transparent 70%);
+  top:-200px;
+  right:-200px;
+  animation:float 6s ease-in-out infinite alternate;
+}
+
+@keyframes float{
+  from{transform:translateY(0px)}
+  to{transform:translateY(40px)}
+}
+
+h1{
+  font-family:'Playfair Display',serif;
+  font-size:42px;
   color:#facc15;
+  margin-bottom:20px;
 }
 
-.hero p{
-  opacity:0.9;
+.subtitle{
+  font-size:18px;
+  opacity:0.85;
+  max-width:600px;
+  line-height:1.6;
 }
 
 .scroll{
-  margin-top:40px;
+  position:absolute;
+  bottom:30px;
   font-size:14px;
-  opacity:0.7;
+  opacity:0.6;
   animation:fade 2s infinite alternate;
 }
 
@@ -47,35 +75,56 @@ section{
   to{opacity:1}
 }
 
-.card-section{
+/* CARD SECTION */
+.details{
   background:linear-gradient(180deg,#fef3c7,#fde68a);
+  color:#1e293b;
 }
 
 .card{
   background:white;
-  padding:40px;
-  border-radius:25px;
-  max-width:600px;
+  border-radius:30px;
+  padding:50px 40px;
+  max-width:700px;
   width:100%;
-  box-shadow:0 20px 40px rgba(0,0,0,0.2);
+  box-shadow:0 30px 60px rgba(0,0,0,0.25);
+  animation:fadeUp 1.2s ease;
+}
+
+@keyframes fadeUp{
+  from{opacity:0; transform:translateY(50px)}
+  to{opacity:1; transform:translateY(0)}
 }
 
 .card h2{
+  font-family:'Playfair Display',serif;
   color:#b45309;
-  margin-bottom:15px;
+  margin-bottom:20px;
 }
 
-.detail{
-  margin:15px 0;
+.info{
+  margin:12px 0;
   font-size:16px;
 }
 
-.btn{
+.highlight{
+  font-weight:600;
+  color:#b45309;
+}
+
+.countdown{
   margin-top:25px;
+  font-size:18px;
+  font-weight:600;
+  color:#d97706;
+}
+
+.btn{
+  margin-top:30px;
   background:#f59e0b;
   border:none;
-  padding:14px 25px;
-  border-radius:15px;
+  padding:14px 28px;
+  border-radius:20px;
   font-size:16px;
   cursor:pointer;
   transition:0.3s;
@@ -86,92 +135,119 @@ section{
   color:white;
 }
 
+/* FOOTER */
 .footer{
   background:#0f172a;
-  color:white;
-  flex-direction:column;
 }
 
-.countdown{
-  font-size:20px;
-  margin-top:20px;
-  font-weight:600;
+.footer h2{
+  font-family:'Playfair Display',serif;
   color:#facc15;
+  margin-bottom:20px;
+}
+
+.footer p{
+  max-width:600px;
+  opacity:0.8;
+  line-height:1.6;
+}
+
+/* Floating Lantern Effect */
+.lantern{
+  position:absolute;
+  width:40px;
+  height:60px;
+  background:linear-gradient(#facc15,#f59e0b);
+  border-radius:10px;
+  animation:lanternFloat 10s linear infinite;
+  opacity:0.6;
+}
+
+@keyframes lanternFloat{
+  from{transform:translateY(100vh)}
+  to{transform:translateY(-150px)}
 }
 </style>
 </head>
 <body>
 
-<!-- Background Music -->
+<!-- Floating Lanterns -->
+<div class="lantern" style="left:10%; animation-duration:12s"></div>
+<div class="lantern" style="left:30%; animation-duration:15s"></div>
+<div class="lantern" style="left:60%; animation-duration:18s"></div>
+<div class="lantern" style="left:80%; animation-duration:20s"></div>
+
+<!-- MUSIC -->
 <audio autoplay loop>
-  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8b5b0f6f7.mp3?filename=ramadan-background-110624.mp3" type="audio/mpeg">
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8b5b0f6f7.mp3?filename=ramadan-background-110624.mp3" type="audio/mpeg">
 </audio>
 
-<!-- Slide 1 -->
+<!-- SLIDE 1 -->
 <section class="hero">
-  <h1>Undangan Buka Bersama</h1>
-  <p>Kepada Yth:</p>
-  <h2 id="namaTamu" style="margin-top:10px">Sahabat Baik</h2>
-  <div class="scroll">Scroll ke bawah ↓</div>
+<div>
+<h1>🌙 Undangan Buka Bersama</h1>
+<p class="subtitle">
+Department PGA – SHE
+<br><br>
+Dalam rangka mempererat silaturahmi dan kebersamaan di bulan penuh berkah,
+kami mengundang seluruh rekan-rekan untuk hadir dalam acara buka bersama.
+</p>
+</div>
+<div class="scroll">Scroll ke bawah ↓</div>
 </section>
 
-<!-- Slide 2 -->
-<section class="card-section">
-  <div class="card">
-    <h2>Acara Buka Puasa Bersama</h2>
-    <p class="detail"><b>Hari/Tanggal:</b> Sabtu, 15 Maret 2026</p>
-    <p class="detail"><b>Waktu:</b> 17.00 WIB - Selesai</p>
-    <p class="detail"><b>Tempat:</b> Rumah / Lokasi Anda</p>
+<!-- SLIDE 2 -->
+<section class="details">
+<div class="card">
+<h2>Detail Acara</h2>
+<p class="info">📅 <span class="highlight">11 Maret 2026</span></p>
+<p class="info">📍 Collaboration Centre TMMIN Plant 1</p>
+<p class="info">🕔 17.00 WIB – selesai</p>
+<p class="info">🕌 Perkiraan Adzan Maghrib: 18.09 WIB</p>
 
-    <div class="countdown" id="countdown"></div>
+<h2 style="margin-top:30px">Iuran</h2>
+<p class="info">Kelas 1–6 : Rp100.000</p>
+<p class="info">Kelas 7–8 : Rp200.000</p>
+<p class="info">Kelas 9 ke atas : Rp300.000</p>
+<p class="info highlight">⏳ Deadline: 5 Maret 2026</p>
 
-    <button class="btn" onclick="konfirmasi()">Konfirmasi Kehadiran</button>
-  </div>
+<div class="countdown" id="countdown"></div>
+
+<button class="btn" onclick="alert('Terima kasih, sampai bertemu di acara! ✨')">Konfirmasi Kehadiran</button>
+</div>
 </section>
 
-<!-- Slide 3 -->
+<!-- SLIDE 3 -->
 <section class="footer">
-  <h2>Ramadan Kareem 🌙</h2>
-  <p style="margin-top:15px;max-width:500px">
-    Semoga kebersamaan ini membawa keberkahan,
-    mempererat silaturahmi, dan menambah kebaikan
-    di bulan suci Ramadan.
-  </p>
-
-  <p style="margin-top:30px;opacity:0.7">
-    Hormat kami,<br>Panitia
-  </p>
+<div>
+<h2>Ramadan Kareem ✨</h2>
+<p>
+Mari kita jadikan momen ini sebagai ruang berbagi cerita, tawa, dan energi positif
+setelah hari kerja, sambil menyambut waktu berbuka bersama.
+Kehadiran rekan-rekan akan membuat kebersamaan ini semakin hangat.
+<br><br>
+Sampai jumpa di acara, jangan sampai terlewat!
+</p>
+</div>
 </section>
 
 <script>
-// Nama tamu dari URL
-const urlParams = new URLSearchParams(window.location.search);
-const nama = urlParams.get('to');
-if(nama){
-  document.getElementById('namaTamu').innerText = nama;
-}
-
-function konfirmasi(){
-  alert("Terima kasih atas konfirmasinya 😊");
-}
-
-// Countdown
-const targetDate = new Date("March 15, 2026 17:00:00").getTime();
+const targetDate = new Date("March 11, 2026 17:00:00").getTime();
 const countdownEl = document.getElementById("countdown");
 
 setInterval(() => {
-  const now = new Date().getTime();
-  const distance = targetDate - now;
+const now = new Date().getTime();
+const distance = targetDate - now;
 
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+const days = Math.floor(distance / (1000*60*60*24));
+const hours = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
+const minutes = Math.floor((distance % (1000*60*60))/(1000*60));
 
-  if(distance > 0){
-    countdownEl.innerHTML = "Menuju Acara: " + days + " Hari " + hours + " Jam " + minutes + " Menit";
-  } else {
-    countdownEl.innerHTML = "Acara Sedang Berlangsung 🎉";
-  }
+if(distance > 0){
+countdownEl.innerHTML = "Menuju Acara: " + days + " Hari " + hours + " Jam " + minutes + " Menit";
+}else{
+countdownEl.innerHTML = "Acara Sedang Berlangsung 🎉";
+}
 },1000);
 </script>
 
