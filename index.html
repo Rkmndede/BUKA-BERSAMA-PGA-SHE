@@ -11,7 +11,6 @@
 body{font-family:'Poppins',sans-serif;scroll-behavior:smooth;overflow-x:hidden;background:#0f172a}
 section{min-height:100vh;display:flex;justify-content:center;align-items:center;text-align:center;padding:80px 20px;position:relative}
 
-/* ================= BACKGROUND IMAGE STYLE ================= */
 .hero{
 background:
 linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)),
@@ -78,6 +77,23 @@ margin-top:15px;background:#facc15;border:none;padding:14px 28px;border-radius:2
 }
 
 .btn:hover{background:#eab308}
+.btn:disabled{opacity:0.7;cursor:not-allowed}
+
+/* Spinner */
+.spinner {
+display:inline-block;
+width:16px;
+height:16px;
+border:3px solid rgba(0,0,0,0.2);
+border-top:3px solid #000;
+border-radius:50%;
+animation:spin 0.7s linear infinite;
+margin-left:8px;
+}
+
+@keyframes spin{
+to{transform:rotate(360deg)}
+}
 
 .table-section{background:#0f172a;color:white;flex-direction:column}
 table{width:100%;max-width:900px;margin-top:20px;border-collapse:collapse}
@@ -94,15 +110,25 @@ color:white;
 
 .footer h2{font-family:'Playfair Display',serif;color:#facc15;margin-bottom:20px}
 .footer p{max-width:800px;line-height:1.8}
+
+.music-btn{
+position:fixed;
+bottom:20px;
+right:20px;
+z-index:999;
+}
 </style>
 </head>
 <body>
 
-<audio autoplay loop>
+<audio id="bgMusic" loop>
 <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8b5b0f6f7.mp3?filename=ramadan-background-110624.mp3" type="audio/mpeg">
 </audio>
 
-<!-- HERO WITH PREMIUM BG -->
+<button class="btn music-btn" id="playMusicBtn" style="display:none">
+🎵 Aktifkan Musik
+</button>
+
 <section class="hero">
 <div class="overlay-content">
 <h1>🌙 Undangan Buka Bersama Department PGA – SHE 🌙</h1>
@@ -116,12 +142,11 @@ serta mempererat hubungan kekeluargaan antar rekan kerja.
 </div>
 </section>
 
-<!-- DETAIL + FORM -->
 <section class="card-section">
 <div class="card">
 <h2>Detail Acara</h2>
-<p class="info">📅 11 Maret 2026</p>
-<p class="info">📍 Collaboration CentER TMMIN Plant 1</p>
+<p class="info">📅 Rabu 11 Maret 2026</p>
+<p class="info">📍 Collaboration Center TMMIN Plant 1</p>
 <p class="info">🕔 17.00 WIB – selesai</p>
 <p class="info">🕌 Perkiraan Adzan: 18.09 WIB</p>
 
@@ -139,19 +164,25 @@ serta mempererat hubungan kekeluargaan antar rekan kerja.
 <option value="Hadir">Hadir</option>
 <option value="Tidak Hadir">Tidak Hadir</option>
 </select>
-<button class="btn" onclick="simpanData()">Kirim Konfirmasi</button>
+<button class="btn" onclick="simpanData(event)">Kirim Konfirmasi</button>
 </div>
 </section>
 
 <section class="table-section">
 <h2>Rekap Konfirmasi</h2>
+<p id="summary" style="margin-top:15px;font-weight:600;color:#facc15"></p>
 <table id="dataTable">
 <thead>
-<tr><th>Nama</th><th>No Reg</th><th>Status</th></tr>
+<tr>
+<th>No</th>
+<th>Nama</th>
+<th>No Reg</th>
+<th>Status</th>
+</tr>
 </thead>
 <tbody></tbody>
 </table>
-<button class="btn" onclick="downloadCSV()">Download Rekap (CSV)</button>
+<button class="btn" onclick="downloadCSV(event)">Download Rekap (CSV)</button>
 </section>
 
 <section class="footer">
@@ -167,35 +198,100 @@ Sampai jumpa di acara.
 
 <script>
 let data = JSON.parse(localStorage.getItem('bukberData')) || [];
+const music = document.getElementById("bgMusic");
+const playBtn = document.getElementById("playMusicBtn");
+
+window.addEventListener("load", () => {
+music.play().then(()=>{
+playBtn.style.display="none";
+}).catch(()=>{
+playBtn.style.display="block";
+});
+});
+
+playBtn.addEventListener("click", ()=>{
+music.play();
+playBtn.style.display="none";
+});
 
 function renderTable(){
 const tbody = document.querySelector('#dataTable tbody');
 tbody.innerHTML = '';
-data.forEach(item => {
-const row = `<tr><td>${item.nama}</td><td>${item.noreg}</td><td>${item.status}</td></tr>`;
-tbody.innerHTML += row;
+
+let hadir=0;
+let tidak=0;
+
+data.forEach((item,index) => {
+if(item.status==="Hadir") hadir++;
+else tidak++;
+
+tbody.innerHTML += `
+<tr>
+<td>${index+1}</td>
+<td>${item.nama}</td>
+<td>${item.noreg}</td>
+<td>${item.status}</td>
+</tr>`;
 });
+
+document.getElementById("summary").innerHTML =
+`Total Hadir: ${hadir} | Tidak Hadir: ${tidak}`;
 }
 
-function simpanData(){
-const nama = document.getElementById('nama').value;
-const noreg = document.getElementById('noreg').value;
+function simpanData(e){
+const btn = e.target;
+btn.disabled=true;
+btn.innerHTML="Menyimpan <span class='spinner'></span>";
+
+setTimeout(()=>{
+const nama = document.getElementById('nama').value.trim();
+const noreg = document.getElementById('noreg').value.trim();
 const status = document.getElementById('status').value;
 
 if(nama === '' || noreg.length !== 7){
 alert('Isi nama dan No Reg 7 digit dengan benar');
+btn.disabled=false;
+btn.innerHTML="Kirim Konfirmasi";
 return;
 }
 
 data.push({nama,noreg,status});
 localStorage.setItem('bukberData', JSON.stringify(data));
 renderTable();
+
+btn.disabled=false;
+btn.innerHTML="Kirim Konfirmasi";
+
 alert('Data berhasil disimpan');
 document.getElementById('nama').value='';
 document.getElementById('noreg').value='';
+},800);
 }
 
-function downloadCSV(){
-let csv = 'Nama,No Reg,Status\n';
-data.forEach(row => {
-csv += `${row
+function downloadCSV(e){
+const btn = e.target;
+btn.disabled=true;
+btn.innerHTML="Menyiapkan <span class='spinner'></span>";
+
+setTimeout(()=>{
+let csv = 'No,Nama,No Reg,Status\n';
+data.forEach((row,index) => {
+csv += `${index+1},${row.nama},${row.noreg},${row.status}\n`;
+});
+
+const blob = new Blob([csv], { type: 'text/csv' });
+const link = document.createElement('a');
+link.href = URL.createObjectURL(blob);
+link.download = 'Rekap_Buka_Bersama.csv';
+link.click();
+
+btn.disabled=false;
+btn.innerHTML="Download Rekap (CSV)";
+},800);
+}
+
+renderTable();
+</script>
+
+</body>
+</html>
