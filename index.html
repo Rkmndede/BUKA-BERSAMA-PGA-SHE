@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Undangan Buka Bersama – PGA SHE</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -17,97 +17,95 @@ overflow-x:hidden;
 scroll-behavior:smooth;
 }
 
+/* STAR BACKGROUND */
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+}
+
 /* OPENING */
 .opening{
 position:fixed;
-top:0;left:0;
-width:100%;height:100vh;
-background:linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.9)),
-url('https://images.unsplash.com/photo-1580136601042-09d58f9c5f44?auto=format&fit=crop&w=1500&q=80');
-background-size:cover;
-background-position:center;
+width:100%;
+height:100vh;
+background:radial-gradient(circle at center,#111 20%,#000 80%);
 display:flex;
+flex-direction:column;
 justify-content:center;
 align-items:center;
-flex-direction:column;
 z-index:9999;
 text-align:center;
 }
 
 .opening h1{
 font-family:'Playfair Display',serif;
-font-size:40px;
 color:#facc15;
+font-size:42px;
 margin-bottom:20px;
+animation:fadeIn 2s ease;
 }
 
 .opening button{
 background:#facc15;
 border:none;
-padding:14px 30px;
-border-radius:30px;
+padding:15px 35px;
+border-radius:40px;
 font-weight:600;
 cursor:pointer;
+transition:.3s;
+}
+
+.opening button:hover{
+transform:scale(1.1);
 }
 
 /* HERO */
 .hero{
 min-height:100vh;
-background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.8)),
-url('https://images.unsplash.com/photo-1580136601036-85cb6dcd98b9?auto=format&fit=crop&w=1500&q=80');
-background-size:cover;
-background-position:center;
 display:flex;
-align-items:center;
 justify-content:center;
+align-items:center;
 text-align:center;
 padding:40px;
 }
 
-.hero-content{
-max-width:900px;
-animation:fadeUp 2s ease;
-}
-
-@keyframes fadeUp{
-from{opacity:0;transform:translateY(50px)}
-to{opacity:1;transform:translateY(0)}
-}
-
 .hero h2{
 font-family:'Playfair Display',serif;
-font-size:44px;
+font-size:50px;
 color:#facc15;
 margin-bottom:20px;
 }
 
 .hero p{
-line-height:1.8;
+max-width:800px;
+line-height:1.9;
 font-size:18px;
 opacity:.9;
 }
 
-/* LENTERA */
-.lantern{
+/* GLOW MOON */
+.moon{
+width:150px;
+height:150px;
+background:radial-gradient(circle,#facc15 20%,transparent 70%);
+border-radius:50%;
 position:absolute;
-top:0;
-width:60px;
-animation:float 4s ease-in-out infinite;
+top:80px;
+right:80px;
+filter:blur(20px);
+animation:float 6s ease-in-out infinite;
 }
-
-.l1{left:10%}
-.l2{right:10%;animation-delay:2s}
 
 @keyframes float{
-0%{transform:translateY(0)}
+0%,100%{transform:translateY(0)}
 50%{transform:translateY(20px)}
-100%{transform:translateY(0)}
 }
 
-/* CARD */
+/* SECTION */
 .section{
-padding:100px 20px;
-background:#0f172a;
+padding:120px 20px;
 text-align:center;
 }
 
@@ -115,87 +113,106 @@ text-align:center;
 max-width:900px;
 margin:auto;
 background:rgba(255,255,255,0.05);
-backdrop-filter:blur(8px);
-padding:60px;
+backdrop-filter:blur(12px);
+padding:70px;
 border-radius:30px;
-border:1px solid rgba(250,204,21,0.3);
-box-shadow:0 30px 60px rgba(0,0,0,.4);
+border:1px solid rgba(250,204,21,0.4);
+box-shadow:0 30px 80px rgba(0,0,0,.5);
 }
 
 .card h3{
 font-family:'Playfair Display',serif;
 color:#facc15;
+font-size:32px;
 margin-bottom:20px;
-font-size:30px;
 }
 
-.info{margin:10px 0}
+.info{margin:12px 0;font-size:17px}
 
 /* COUNTDOWN */
 .countdown{
-margin-top:30px;
-font-size:22px;
+margin-top:40px;
+font-size:24px;
 color:#facc15;
 font-weight:600;
 }
 
 /* FOOTER */
 .footer{
-padding:100px 20px;
+padding:120px 20px;
 text-align:center;
-background:linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.9)),
-url('https://images.unsplash.com/photo-1580136601042-09d58f9c5f44?auto=format&fit=crop&w=1500&q=80');
-background-size:cover;
-background-position:center;
+background:linear-gradient(#000,#111);
 }
 
-/* MUSIC BUTTON */
-.music-btn{
+.footer h2{
+font-family:'Playfair Display',serif;
+color:#facc15;
+font-size:32px;
+}
+
+/* MUSIC PANEL */
+.music-panel{
 position:fixed;
 bottom:20px;
 right:20px;
 background:#facc15;
+padding:15px;
+border-radius:20px;
+box-shadow:0 15px 40px rgba(0,0,0,.4);
+}
+
+.music-panel button{
 border:none;
-padding:12px 20px;
-border-radius:30px;
-font-weight:600;
+padding:6px 12px;
+border-radius:12px;
 cursor:pointer;
+margin:2px;
+font-weight:600;
+}
+
+.music-panel input{
+width:100px;
+}
+
+@keyframes fadeIn{
+from{opacity:0}
+to{opacity:1}
 }
 </style>
 </head>
 <body>
 
-<!-- OPENING -->
+<canvas id="stars"></canvas>
+
 <div class="opening" id="opening">
 <h1>🌙 Undangan Buka Bersama 🌙</h1>
-<p>Department PGA – SHE</p>
-<br>
-<button onclick="bukaUndangan()">Buka Undangan</button>
+<button onclick="startExperience()">Buka Undangan</button>
 </div>
 
-<audio id="music" loop>
-<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8b5b0f6f7.mp3" type="audio/mpeg">
-</audio>
+<div class="moon"></div>
 
-<button class="music-btn" onclick="toggleMusic()">🎵 Musik</button>
+<audio id="music" loop></audio>
 
-<!-- HERO -->
+<div class="music-panel">
+<button onclick="playMusic()">▶</button>
+<button onclick="pauseMusic()">⏸</button>
+<button onclick="nextSong()">⏭</button>
+<br>
+Volume <input type="range" min="0" max="1" step="0.1" onchange="setVolume(this.value)">
+</div>
+
 <section class="hero">
-<img src="https://cdn-icons-png.flaticon.com/512/616/616489.png" class="lantern l1">
-<img src="https://cdn-icons-png.flaticon.com/512/616/616489.png" class="lantern l2">
-
-<div class="hero-content">
+<div>
 <h2>Ramadan Kareem ✨</h2>
 <p>
-Dengan penuh rasa syukur dan kebahagiaan di bulan suci Ramadan,
-kami mengundang seluruh keluarga besar Department PGA – SHE
-untuk hadir dalam acara Buka Bersama.
-Semoga kebersamaan ini menjadi momen indah penuh keberkahan.
+Dengan penuh rasa syukur di bulan suci Ramadan,
+kami mengundang keluarga besar Department PGA – SHE
+untuk hadir dalam acara Buka Bersama yang penuh keberkahan.
+Semoga momen ini mempererat silaturahmi dan kebersamaan.
 </p>
 </div>
 </section>
 
-<!-- DETAIL -->
 <section class="section">
 <div class="card">
 <h3>Detail Acara</h3>
@@ -203,50 +220,77 @@ Semoga kebersamaan ini menjadi momen indah penuh keberkahan.
 <p class="info">📍 Collaboration Center TMMIN Plant 1</p>
 <p class="info">🕔 17.00 WIB – selesai</p>
 <p class="info">🏦 Permata Bank 9913401244</p>
-
 <div class="countdown" id="countdown"></div>
 </div>
 </section>
 
-<!-- FOOTER -->
 <section class="footer">
-<h2 style="color:#facc15;font-family:'Playfair Display',serif">
-Sampai Jumpa di Acara 🌙✨
-</h2>
-<p>Semoga silaturahmi ini membawa keberkahan untuk kita semua.</p>
+<h2>Sampai Jumpa di Acara 🌙✨</h2>
 </section>
 
 <script>
+/* MUSIC SYSTEM */
+const songs=[
+"https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8b5b0f6f7.mp3",
+"https://cdn.pixabay.com/download/audio/2021/09/06/audio_0a3bdf2c9b.mp3",
+"https://cdn.pixabay.com/download/audio/2022/04/27/audio_4a1bb5a7e6.mp3"
+];
+
+let currentSong=0;
 const music=document.getElementById("music");
 
-function bukaUndangan(){
+function startExperience(){
 document.getElementById("opening").style.display="none";
+music.src=songs[currentSong];
+music.volume=0.5;
 music.play();
 }
 
-function toggleMusic(){
-if(music.paused){
+function playMusic(){music.play();}
+function pauseMusic(){music.pause();}
+function nextSong(){
+currentSong=(currentSong+1)%songs.length;
+music.src=songs[currentSong];
 music.play();
-}else{
-music.pause();
 }
-}
+function setVolume(val){music.volume=val;}
 
 /* COUNTDOWN */
-const targetDate = new Date("March 11, 2026 17:00:00").getTime();
-const countdownEl = document.getElementById("countdown");
-
+const target=new Date("March 11, 2026 17:00:00").getTime();
 setInterval(()=>{
-const now = new Date().getTime();
-const distance = targetDate - now;
-
-const days = Math.floor(distance/(1000*60*60*24));
-const hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
-const minutes = Math.floor((distance%(1000*60*60))/(1000*60));
-
-countdownEl.innerHTML = 
-`Menuju Acara: ${days} Hari ${hours} Jam ${minutes} Menit`;
+const now=new Date().getTime();
+const diff=target-now;
+const d=Math.floor(diff/(1000*60*60*24));
+const h=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+const m=Math.floor((diff%(1000*60*60))/(1000*60));
+document.getElementById("countdown").innerHTML=
+`Menuju Acara: ${d} Hari ${h} Jam ${m} Menit`;
 },1000);
+
+/* STAR ANIMATION */
+const canvas=document.getElementById("stars");
+const ctx=canvas.getContext("2d");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let stars=[];
+for(let i=0;i<150;i++){
+stars.push({x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*2});
+}
+
+function drawStars(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.fillStyle="white";
+stars.forEach(s=>{
+ctx.beginPath();
+ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+ctx.fill();
+});
+requestAnimationFrame(drawStars);
+}
+drawStars();
 </script>
 
 </body>
