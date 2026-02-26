@@ -16,6 +16,7 @@ color:white;
 overflow-x:hidden;
 }
 
+/* PARTICLE CANVAS */
 canvas{
 position:fixed;
 top:0;
@@ -23,48 +24,61 @@ left:0;
 z-index:-1;
 }
 
-/* OPENING */
+/* OPENING WITH IMAGE BG */
 .opening{
 position:fixed;
 width:100%;
 height:100vh;
-background:radial-gradient(circle at center,#111 20%,#000 80%);
+background:url("bg ramadhan.png") center/cover no-repeat;
 display:flex;
 flex-direction:column;
-justify-content:center;
+justify-content:flex-end;
 align-items:center;
 z-index:9999;
 text-align:center;
-padding:20px;
-transition:opacity .5s ease;
+padding:40px 20px;
+}
+
+.opening::before{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.4));
+}
+
+.opening-content{
+position:relative;
+z-index:2;
 }
 
 .opening h1{
 font-family:'Playfair Display',serif;
 color:#facc15;
-font-size:clamp(26px,5vw,40px);
+font-size:clamp(28px,6vw,44px);
 margin-bottom:10px;
 }
 
 .opening p{
-opacity:.8;
+font-size:clamp(14px,3vw,18px);
 margin-bottom:25px;
 }
 
 .opening button{
-background:#facc15;
+background:linear-gradient(45deg,#facc15,#eab308);
 border:none;
-padding:14px 30px;
+padding:15px 40px;
 border-radius:40px;
 font-weight:600;
 cursor:pointer;
-box-shadow:0 0 20px rgba(250,204,21,.6);
+color:#000;
+font-size:16px;
+box-shadow:0 0 25px rgba(250,204,21,.8);
 animation:pulse 2s infinite;
 }
 
 @keyframes pulse{
 0%{box-shadow:0 0 10px rgba(250,204,21,.4)}
-50%{box-shadow:0 0 30px rgba(250,204,21,.9)}
+50%{box-shadow:0 0 35px rgba(250,204,21,1)}
 100%{box-shadow:0 0 10px rgba(250,204,21,.4)}
 }
 
@@ -75,7 +89,7 @@ display:flex;
 justify-content:center;
 align-items:center;
 text-align:center;
-padding:40px 20px;
+padding:60px 20px;
 }
 
 .hero h2{
@@ -145,14 +159,21 @@ min-width:60px;
 
 .time-box span{
 display:block;
-font-size:18px;
+font-size:16px;
 font-weight:700;
 color:#facc15;
 }
 
 .time-box small{
-font-size:11px;
+font-size:10px;
 opacity:.7;
+}
+
+/* SALAM STYLE */
+.salam{
+font-family:'Playfair Display',serif;
+font-size:22px;
+margin-bottom:25px;
 }
 
 /* FOOTER */
@@ -160,13 +181,6 @@ opacity:.7;
 padding:80px 20px;
 text-align:center;
 background:linear-gradient(#000,#111);
-}
-
-.arabic{
-font-size:20px;
-line-height:2;
-margin-top:20px;
-direction:rtl;
 }
 </style>
 </head>
@@ -176,9 +190,11 @@ direction:rtl;
 
 <!-- OPENING -->
 <div class="opening" id="opening">
+<div class="opening-content">
 <h1>Buka Bersama PGA SHE</h1>
 <p>Kepada Bapak/Ibu</p>
 <button onclick="startExperience()">Buka Undangan 🎵</button>
+</div>
 </div>
 
 <audio id="music" loop>
@@ -188,8 +204,12 @@ direction:rtl;
 <section class="hero">
 <div>
 <h2>Ramadan Kareem ✨</h2>
+
+<div class="salam">
+Assalamualaikum Warahmatullahi Wabarakatuh
+</div>
+
 <p>
-Assalamualaikum Warahmatullahi Wabarakatuh.<br><br>
 Dengan penuh rasa syukur dan kebahagiaan,
 kami mengundang Bapak/Ibu untuk hadir dalam acara
 Buka Bersama PGA SHE sebagai momen mempererat silaturahmi
@@ -233,17 +253,7 @@ Klik di sini untuk konfirmasi
 </section>
 
 <section class="footer">
-<h2>Doa Ramadan 🌙</h2>
-<div class="arabic">
-اللّهُمَّ بَارِكْ لَنَا فِي رَمَضَانَ وَاغْفِرْ لَنَا ذُنُوبَنَا وَتَقَبَّلْ مِنَّا صِيَامَنَا وَقِيَامَنَا
-</div>
-
-<p style="margin-top:20px;opacity:.8">
-Ya Allah, berkahilah kami di bulan Ramadan,
-ampuni dosa-dosa kami dan terimalah ibadah kami.
-</p>
-
-<h2 style="margin-top:30px">
+<h2 class="salam">
 Wassalamualaikum Warahmatullahi Wabarakatuh
 </h2>
 </section>
@@ -264,10 +274,10 @@ setInterval(()=>{
 const now=new Date().getTime();
 const diff=target-now;
 if(diff>0){
-document.getElementById("days").innerText=Math.floor(diff/(1000*60*60*24));
-document.getElementById("hours").innerText=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-document.getElementById("minutes").innerText=Math.floor((diff%(1000*60*60))/(1000*60));
-document.getElementById("seconds").innerText=Math.floor((diff%(1000*60))/1000);
+days.innerText=Math.floor(diff/(1000*60*60*24));
+hours.innerText=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+minutes.innerText=Math.floor((diff%(1000*60*60))/(1000*60));
+seconds.innerText=Math.floor((diff%(1000*60))/1000);
 }
 },1000);
 
