@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Undangan Buka Bersama</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: linear-gradient(to bottom, #fde68a, #fcd34d);
+      padding: 40px;
+    }
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+    h1 { color: #b45309; }
+    h2 { color: #ea580c; }
+    button {
+      background: #f59e0b;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background: #d97706;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h1>Undangan Buka Bersama</h1>
+  <p>Kepada Yth:</p>
+  <h2 id="namaTamu">Sahabat Baik</h2>
+
+  <p>
+    Dengan penuh kebahagiaan kami mengundang Anda
+    untuk hadir dalam acara Buka Puasa Bersama.
+  </p>
+
+  <p><b>Hari/Tanggal:</b> Sabtu, 15 Maret 2026</p>
+  <p><b>Waktu:</b> 17.00 WIB - Selesai</p>
+  <p><b>Tempat:</b> Rumah / Lokasi Anda</p>
+
+  <br>
+  <button onclick="konfirmasi()">Konfirmasi Kehadiran</button>
+
+  <p style="margin-top:30px;">
+    Hormat kami,<br>
+    Panitia
+  </p>
+</div>
+
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const nama = urlParams.get('to');
+  if(nama){
+    document.getElementById('namaTamu').innerText = nama;
+  }
+
+  function konfirmasi(){
+    alert("Terima kasih atas konfirmasinya 😊");
+  }
+</script>
+
+</body>
+</html>
